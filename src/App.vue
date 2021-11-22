@@ -1,28 +1,21 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="Home">
+    <!-- <PostButton /> -->
+    <!-- <PostForm /> -->
+    <MainBoard />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue"
-
+// import PostButton from "@/components/PostButton.vue"
+// import PostForm from "@/components/PostForm.vue"
+import MainBoard from "@/components/MainBoard.vue"
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    // PostButton,
+    // PostForm,
+    MainBoard,
   },
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
