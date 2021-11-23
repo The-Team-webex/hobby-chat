@@ -1,6 +1,6 @@
 <template>
   <div class="MainBoard">
-    <h1>{{ this.keyWord }}あ</h1>
+    <h1>あ</h1>
     <SearchForm
       v-bind:keyCategory="this.keyCategory"
       v-bind:keyPlace="this.keyPlace"
