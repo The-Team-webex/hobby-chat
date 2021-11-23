@@ -30,3 +30,16 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  components: {},
+  // methods: {
+  //   post: function () {
+  //     setTimeout(() => {
+  //       window.location.href = "/post-form"
+  //     }, 5000)
+  //   },
+  // },
+}
+</script>
