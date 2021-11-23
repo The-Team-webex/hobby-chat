@@ -144,6 +144,8 @@ export default {
       ) {
         this.posts.push(post)
         firebase.firestore().collection("posts").doc(newDoc).set(post)
+        alert("投稿が完了しました！")
+        this.$router.push("/")
       }
     },
   },

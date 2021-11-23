@@ -1,8 +1,16 @@
 <template>
   <div class="MainBoard">
+    <h1>{{ this.keyWord }}あ</h1>
+    <SearchForm
+      v-bind:keyCategory="this.keyCategory"
+      v-bind:keyPlace="this.keyPlace"
+      v-bind:keyDate="this.keyDate"
+      v-bind:inputWord="this.keyWord"
+    />
+    <router-link to="/post-form"><PostButton /></router-link>
     <div
       class="Posted__forms"
-      v-for="(post, index) in posts"
+      v-for="(post, index) in filteredPosts"
       v-bind:key="index"
     >
       <div class="Posted__form">
@@ -28,9 +36,19 @@
 
 <script>
 import firebase from "firebase"
+import PostButton from "@/components/PostButton.vue"
+import SearchForm from "@/components/SearchForm.vue"
 export default {
+  components: {
+    PostButton,
+    SearchForm,
+  },
   data() {
     return {
+      keyCategory: "",
+      keyPlace: "",
+      keyDate: "",
+      keyWord: "",
       posts: [],
     }
   },
@@ -44,6 +62,22 @@ export default {
           this.posts.push(snapshot.docs[i].data())
         }
       })
+  },
+  computed: {
+    filteredPosts: function () {
+      const posts = []
+      for (let i = 0; i < this.posts.length; i++) {
+        const post = this.posts[i]
+        if (
+          post.category.indexOf(this.keyCategory) !== -1 ||
+          post.place.indexOf(this.keyPlace) !== -1 ||
+          post.date.indexOf(this.keyDate) !== -1
+        ) {
+          posts.push(post)
+        }
+      }
+      return posts
+    },
   },
 }
 </script>
@@ -95,12 +129,16 @@ export default {
   color: #00adb5;
   padding-bottom: 12px;
   border-bottom: solid 2px #b6b6b6;
-  padding-left: 50px;
 }
 
 .texts__text {
   color: #393e46;
   padding: 0px 50px;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
 }
 
 .post__button {
