@@ -1,13 +1,13 @@
 <template>
   <div class="SearchForm">
     <h3 class="form__title">絞り込み検索</h3>
-    <select class="Category__select" v-model="keyCategory">
+    <select class="Category__select" v-model="$store.state.keyCategory">
       <option value="" hidden>選択してください</option>
       <option value="スポーツ">スポーツ</option>
       <option value="ゲーム">ゲーム</option>
       <option value="その他">その他</option>
     </select>
-    <select class="Place__select" v-model="keyPlace">
+    <select class="Place__select" v-model="$store.state.keyPlace">
       <option value="" hidden>選択してください</option>
       <optgroup label="関東">
         <option value="東京都">東京都</option>
@@ -74,8 +74,8 @@
         <option>オンライン</option>
       </optgroup>
     </select>
-    <input type="date" v-model="keyDate" />
-    <input type="text" v-model="keyWord" />
+    <input type="date" v-model="$store.state.keyDate" />
+    <input type="text" v-model="$store.state.keyWord" />
 
     <div class="search__button">
       <div class="button__circle">
@@ -89,27 +89,6 @@
 export default {
   data() {
     return {}
-  },
-  model: {
-    prop: "keyWord",
-    event: "input",
-  },
-  props: {
-    keyCategory: { type: [String, Number] },
-    keyPlace: { type: [String, Number] },
-    keyDate: { type: [String, Number] },
-    keyWord: { type: [String, Number] },
-  },
-
-  computed: {
-    inputWord: {
-      get() {
-        return this.keyWord
-      },
-      set(value) {
-        this.$emit("input", value)
-      },
-    },
   },
 }
 </script>

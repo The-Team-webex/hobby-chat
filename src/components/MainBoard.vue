@@ -1,16 +1,11 @@
 <template>
   <div class="MainBoard">
-    <h1>あ</h1>
-    <SearchForm
-      v-bind:keyCategory="this.keyCategory"
-      v-bind:keyPlace="this.keyPlace"
-      v-bind:keyDate="this.keyDate"
-      v-bind:inputWord="this.keyWord"
-    />
+    <!-- <h1>{{ $store.state.posts }}あ{{ $store.state.keyCategory }}</h1> -->
+    <SearchForm />
     <router-link to="/post-form"><PostButton /></router-link>
     <div
       class="Posted__forms"
-      v-for="(post, index) in filteredPosts"
+      v-for="(post, index) in $store.state.posts"
       v-bind:key="index"
     >
       <div class="Posted__form">
@@ -35,7 +30,6 @@
 </template>
 
 <script>
-import firebase from "firebase"
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
 export default {
@@ -53,32 +47,15 @@ export default {
     }
   },
   created() {
-    firebase
-      .firestore()
-      .collection("posts")
-      .get()
-      .then((snapshot) => {
-        for (let i = 0; i < snapshot.docs.length; i++) {
-          this.posts.push(snapshot.docs[i].data())
-        }
-      })
+    this.$store.commit("created")
   },
-  computed: {
-    filteredPosts: function () {
-      const posts = []
-      for (let i = 0; i < this.posts.length; i++) {
-        const post = this.posts[i]
-        if (
-          post.category.indexOf(this.keyCategory) !== -1 ||
-          post.place.indexOf(this.keyPlace) !== -1 ||
-          post.date.indexOf(this.keyDate) !== -1
-        ) {
-          posts.push(post)
-        }
-      }
-      return posts
-    },
-  },
+
+  // computed: {
+  //   filteredPosts: function () {
+  //     const filteredPosts = this.$store.commit("filteredPosts")
+  //     return filteredPosts
+  //   },
+  // },
 }
 </script>
 
