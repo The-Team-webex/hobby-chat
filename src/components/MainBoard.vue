@@ -2,6 +2,7 @@
   <div class="MainBoard">
     <!-- <h1>{{ $store.state.posts }}あ{{ $store.state.keyCategory }}</h1> -->
     <SearchForm />
+    <Chat />
     <router-link to="/post-form"><PostButton /></router-link>
     <div
       class="Posted__forms"
@@ -23,7 +24,7 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
-        <div class="post__button">詳細を見る</div>
+        <div class="post__button">チャットに入る</div>
       </div>
     </div>
   </div>
@@ -32,10 +33,13 @@
 <script>
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
+import Chat from "@/components/chat/chat.vue"
+
 export default {
   components: {
     PostButton,
     SearchForm,
+    Chat,
   },
   data() {
     return {
@@ -49,14 +53,19 @@ export default {
   created() {
     this.$store.commit("created")
   },
-
   // computed: {
-  //   filteredPosts: function () {
-  //     const filteredPosts = this.$store.commit("filteredPosts")
-  //     return filteredPosts
+  //   showChat() {
+  //     return this.$router.params.Chat
   //   },
   // },
 }
+
+// computed: {
+//   filteredPosts: function () {
+//     const filteredPosts = this.$store.commit("filteredPosts")
+//     return filteredPosts
+//   },
+// },
 </script>
 
 <style scoped>
@@ -86,9 +95,6 @@ export default {
   font-weight: bold; /*文字を太字に*/
   color: #00adb5; /*文字色を白に*/
   border-radius: 10px;
-}
-
-.name {
 }
 
 .date__title {

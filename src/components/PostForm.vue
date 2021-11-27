@@ -162,8 +162,7 @@ export default {
 .PostForm__title {
   text-align: center;
 }
-.title {
-}
+
 .Form__button {
   font-size: 20px;
   font-weight: bold;

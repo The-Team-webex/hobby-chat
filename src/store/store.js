@@ -3,7 +3,6 @@ import Vuex from "vuex"
 
 Vue.use(Vuex)
 import firebase from "firebase"
-
 export default new Vuex.Store({
   state: {
     keyCategory: "",
