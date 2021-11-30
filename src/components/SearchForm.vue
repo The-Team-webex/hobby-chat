@@ -74,10 +74,10 @@
         <option>オンライン</option>
       </optgroup>
     </select>
-    <input type="date" v-model="$store.state.keyDate" />
+    <!-- <input type="date" v-model="$store.state.keyDate" /> -->
     <input type="text" v-model="$store.state.keyWord" />
 
-    <div class="search__button">
+    <div class="search__button" @click="filterlingPosts">
       <div class="button__circle">
         <img class="button__img" src="../assets/サーチアイコン.png" alt="" />
       </div>
@@ -89,6 +89,11 @@
 export default {
   data() {
     return {}
+  },
+  methods: {
+    filterlingPosts: function () {
+      this.$store.commit("filteringPosts")
+    },
   },
 }
 </script>
@@ -108,6 +113,7 @@ export default {
 
 .search__button {
   float: right;
+  cursor: pointer;
 }
 
 .button__circle {

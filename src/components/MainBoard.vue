@@ -1,11 +1,10 @@
 <template>
   <div class="MainBoard">
-    <!-- <h1>{{ $store.state.posts }}あ{{ $store.state.keyCategory }}</h1> -->
     <SearchForm />
     <router-link to="/post-form"><PostButton /></router-link>
     <div
       class="Posted__forms"
-      v-for="(post, index) in $store.state.posts"
+      v-for="(post, index) in this.$store.state.filteredPosts"
       v-bind:key="index"
     >
       <div class="Posted__form">
@@ -23,7 +22,9 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
-        <div class="post__button">詳細を見る</div>
+        <router-link :to="{ name: `DetailPage`, params: { id: post.id } }"
+          ><div class="post__button">詳細を見る</div></router-link
+        >
       </div>
     </div>
   </div>
@@ -44,18 +45,53 @@ export default {
       keyDate: "",
       keyWord: "",
       posts: [],
+      filteredPosts: [],
     }
   },
-  created() {
-    this.$store.commit("created")
+
+  methods: {
+    // filteringPosts: function () {
+    //   const posts = []
+    //   for (let i = 0; i < this.posts.length; i++) {
+    //     const post = this.posts[i]
+    //     if (
+    //       (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
+    //         post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
+    //         post.date.indexOf(this.$store.state.keyDate) !== -1) ||
+    //       post.title.indexOf(this.$store.state.keyWord) !== -1 ||
+    //       post.text.indexOf(this.$store.state.keyWord) !== -1
+    //     ) {
+    //       posts.push(post)
+    //     }
+    //   }
+    //   return posts
+    // },
   },
 
-  // computed: {
-  //   filteredPosts: function () {
-  //     const filteredPosts = this.$store.commit("filteredPosts")
-  //     return filteredPosts
-  //   },
-  // },
+  created() {
+    this.$store.commit("created")
+    this.posts = this.$store.state.posts
+  },
+
+  computed: {
+    //   filteredPosts: function () {
+    //     const posts = []
+    //     for (let i = 0; i < this.posts.length; i++) {
+    //       const post = this.posts[i]
+    //       if (
+    //         (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
+    //           post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
+    //           post.date.indexOf(this.$store.state.keyDate) !== -1) ||
+    //         post.title.indexOf(this.$store.state.keyWord) !== -1 ||
+    //         post.text.indexOf(this.$store.state.keyWord) !== -1
+    //       ) {
+    //         posts.push(post)
+    //       }
+    //     }
+    //     return posts
+    //   },
+    // },
+  },
 }
 </script>
 
