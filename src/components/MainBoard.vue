@@ -1,6 +1,5 @@
 <template>
   <div class="MainBoard">
-    {{ this.$store.state.filteredPosts }}
     <SearchForm />
     <router-link to="/post-form"><PostButton /></router-link>
     <div
@@ -23,7 +22,9 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
-        <div class="post__button">詳細を見る</div>
+        <router-link :to="{ name: `DetailPage`, params: { id: post.id } }"
+          ><div class="post__button">詳細を見る</div></router-link
+        >
       </div>
     </div>
   </div>

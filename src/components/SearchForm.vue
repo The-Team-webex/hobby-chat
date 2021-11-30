@@ -74,7 +74,7 @@
         <option>オンライン</option>
       </optgroup>
     </select>
-    <input type="date" v-model="$store.state.keyDate" />
+    <!-- <input type="date" v-model="$store.state.keyDate" /> -->
     <input type="text" v-model="$store.state.keyWord" />
 
     <div class="search__button" @click="filterlingPosts">

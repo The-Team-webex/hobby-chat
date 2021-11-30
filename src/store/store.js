@@ -15,6 +15,8 @@ export default new Vuex.Store({
   },
   mutations: {
     created: function (state) {
+      state.filteredPosts.length = 0
+      state.posts.length = 0
       firebase
         .firestore()
         .collection("posts")
@@ -42,6 +44,20 @@ export default new Vuex.Store({
       }
     },
   },
-  actions: {},
+  actions: {
+    // created: function (state) {
+    //   firebase
+    //     .firestore()
+    //     .collection("posts")
+    //     .get()
+    //     .then((snapshot) => {
+    //       state.filteredPosts.length = 0
+    //       for (let i = 0; i < snapshot.docs.length; i++) {
+    //         state.posts.push(snapshot.docs[i].data())
+    //         state.filteredPosts.push(snapshot.docs[i].data())
+    //       }
+    //     })
+    // },
+  },
   modules: {},
 })
