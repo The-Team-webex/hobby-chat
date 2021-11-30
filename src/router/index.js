@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import MainBoard from "../components/MainBoard.vue"
 import PostForm from "../components/PostForm.vue"
-import Chat from "../components/chat/chat.vue"
+import Chat from "../components/chat/Chat.vue"
 
 Vue.use(VueRouter)
 
@@ -27,7 +27,7 @@ const routes = [
     component: PostForm,
   },
   {
-    path: "/chat",
+    path: "/chat/:id",
     name: "Chat",
     component: Chat,
   },

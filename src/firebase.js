@@ -1,5 +1,7 @@
+import Vue from "vue"
 import firebase from "firebase"
 import "firebase/firestore"
+import vueChatScroll from "vue-chat-scroll"
 
 const firebaseConfig = {
   apiKey: "AIzaSyCOGbWI-p5fQNpRYSqYZN0UrYRCQ7SXQWA",
@@ -12,3 +14,8 @@ const firebaseConfig = {
 }
 
 firebase.initializeApp(firebaseConfig)
+firebase.firestore().settings({ timestampsInSnapshots: true })
+
+Vue.use(vueChatScroll)
+
+export default firebase.firestore()

@@ -53,7 +53,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           console.log(result)
-          router.push("/success")
+          router.push("/")
         })
         .catch((error) => {
           console.log(error)
@@ -69,7 +69,7 @@ export default {
         .signInWithPopup(provider)
         .then((result) => {
           console.log(result.user)
-          router.push("/success")
+          router.push("/")
         })
         .catch((error) => {
           console.log(error)
@@ -77,6 +77,12 @@ export default {
           this.showError = true
         })
     },
+    setAuthUser() {
+      this.authUser = firebase.auth().currentUser
+    },
+  },
+  created() {
+    this.setAuthUser()
   },
 }
 </script>

@@ -4,12 +4,11 @@
       <div
         v-for="(message, index) in messages"
         :key="index"
-        :class="
-          message.username == username ? 'message current-user' : 'message'
-        "
+        v-chat-scroll="{ always: false, smooth: true }"
       >
         <span class="username">{{ message.username }}</span>
-        <p class="content">{{ message.content }}</p>
+        <!-- <span class="date">{{ message.createdAt }}</span> -->
+        <span class="content">{{ message.message }}</span>
       </div>
     </section>
     <div class="input-box">
@@ -19,26 +18,53 @@
         type="text"
         placeholder="メッセージを入力して下さい。"
       />
-      <button type="submit" @click="sendMessage">
-        <img src="src/components/chat/icons/send-empty.svg" alt="send" />
+      <button type="submit" @click="sendMessage" :disabled="text == ''">
+        <img src="send-texting.svg" alt="send" />
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import firebase from "firebase"
+
 export default {
   data() {
     return {
       inputMessage: "",
-      messages: [{ username: "", content: "" }],
-      username: "",
+      messages: [],
+      unsubscribe: null,
+      username: "jaehee",
     }
   },
   methods: {
     sendMessage() {
-      //
+      const createMessage = {
+        username: this.username,
+        message: this.inputMessage,
+      }
+      firebase
+        .firestore()
+        .collection("messages")
+        .add(createMessage)
+        .then((ref) => {
+          this.messages.push({
+            id: ref.id,
+            ...createMessage,
+          })
+        })
     },
+  },
+  created() {
+    firebase
+      .firestore()
+      .collection("messages")
+      .get()
+      .then((snapshot) => {
+        for (let i = 0; i < snapshot.docs.length; i++) {
+          this.messages.push(snapshot.docs[i].data())
+        }
+      })
   },
 }
 </script>

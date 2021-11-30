@@ -6,10 +6,9 @@
 </template>
 
 <script>
-import ChatList from "@/components/chat/chatList.vue"
-import Message from "@/components/chat/MessageBox.vue"
-
-import firebase from "firebase"
+import ChatList from "./ChatList.vue"
+import Message from "./MessageBox.vue"
+// import firebase from "firebase"
 
 export default {
   components: {
@@ -17,10 +16,7 @@ export default {
     Message,
   },
   data() {
-    return {
-      user: firebase.auth().currentUser,
-      db: firebase.firestore(),
-    }
+    return {}
   },
 }
 </script>
