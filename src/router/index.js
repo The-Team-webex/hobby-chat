@@ -2,6 +2,9 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 import MainBoard from "../components/MainBoard.vue"
 import PostForm from "../components/PostForm.vue"
+import DetailPage from "../components/DetailPage.vue"
+import Login2 from "../views/Login2.vue"
+import Profile from "../views/Profile.vue"
 
 Vue.use(VueRouter)
 
@@ -24,6 +27,21 @@ const routes = [
     path: "/post-form",
     name: "PostForm",
     component: PostForm,
+  },
+  {
+    path: "/detail-page/:id",
+    name: "DetailPage",
+    component: DetailPage,
+  },
+  {
+    path: "/login2",
+    name: "Login2",
+    component: Login2,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
   },
 ]
 
