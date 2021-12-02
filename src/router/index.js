@@ -6,6 +6,7 @@ import DetailPage from "../components/DetailPage.vue"
 import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,6 +44,7 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
+
 ]
 
 const router = new VueRouter({
