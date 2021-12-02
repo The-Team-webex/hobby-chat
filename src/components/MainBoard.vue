@@ -52,48 +52,9 @@ export default {
     }
   },
 
-  methods: {
-    // filteringPosts: function () {
-    //   const posts = []
-    //   for (let i = 0; i < this.posts.length; i++) {
-    //     const post = this.posts[i]
-    //     if (
-    //       (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
-    //         post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
-    //         post.date.indexOf(this.$store.state.keyDate) !== -1) ||
-    //       post.title.indexOf(this.$store.state.keyWord) !== -1 ||
-    //       post.text.indexOf(this.$store.state.keyWord) !== -1
-    //     ) {
-    //       posts.push(post)
-    //     }
-    //   }
-    //   return posts
-    // },
-  },
-
   created() {
     this.$store.commit("created")
     this.posts = this.$store.state.posts
-  },
-
-  computed: {
-    //   filteredPosts: function () {
-    //     const posts = []
-    //     for (let i = 0; i < this.posts.length; i++) {
-    //       const post = this.posts[i]
-    //       if (
-    //         (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
-    //           post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
-    //           post.date.indexOf(this.$store.state.keyDate) !== -1) ||
-    //         post.title.indexOf(this.$store.state.keyWord) !== -1 ||
-    //         post.text.indexOf(this.$store.state.keyWord) !== -1
-    //       ) {
-    //         posts.push(post)
-    //       }
-    //     }
-    //     return posts
-    //   },
-    // },
   },
 }
 </script>

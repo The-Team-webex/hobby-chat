@@ -21,10 +21,17 @@ export default {
   },
   created: function () {
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
+      if (user && this.$store.state.userData.id === "") {
+        const newDoc = firebase.firestore().collection("userData").doc().id
+        const userData = {
+          dataId: newDoc,
+          userId: user.uid,
+        }
+        firebase.firestore().collection("user").doc(newDoc).set(userData)
+        this.$store.state.userData.id = user.uid
         this.$store.state.isAuth = true
         console.log("ログインしています")
-      } else {
+      } else if (user && this.$store.state.userData.id !== "") {
         this.$store.state.isAuth = false
         console.log("ログインしていません")
       }

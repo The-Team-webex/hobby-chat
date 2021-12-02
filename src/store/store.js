@@ -7,7 +7,8 @@ import firebase from "firebase"
 export default new Vuex.Store({
   state: {
     isAuth: false,
-    userData: { name: "読み込み中..", photo: "画像" },
+    userData: { id: "", name: "読み込み中..", photo: "画像" },
+    userName: "",
     keyCategory: "",
     keyPlace: "",
     keyDate: "",
@@ -45,13 +46,32 @@ export default new Vuex.Store({
         }
       }
     },
+    changeName: function (state) {
+      state.userData.name = state.userName
+    },
   },
   actions: {},
   modules: {},
   getters: {
+    setName: function (state) {
+      const newDoc = firebase.firestore().collection("userData").doc().id
+      const userData = {
+        dataId: newDoc,
+        userId: state.userData.id,
+      }
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user && state.userData.id !== user.uid) {
+          //新規ログインの場合？
+          firebase.firestore().collection("user").doc(newDoc).set(userData)
+        }
+      })
+    },
     getData: function (state) {
       firebase.auth().onAuthStateChanged((user) => {
+        // const dataId = firebase.firestore().collection("users").doc()
+        // const getData = firebase.firestore().collection("users").get()
         if (user) {
+          state.userData.id = user.uid
           state.userData.name = user.displayName
           state.userData.photo = user.photoURL
           state.isAuth = true
