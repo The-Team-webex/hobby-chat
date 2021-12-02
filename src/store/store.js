@@ -7,7 +7,7 @@ import firebase from "firebase"
 export default new Vuex.Store({
   state: {
     isAuth: false,
-    userData: { name: "名前", photo: "画像" },
+    userData: { name: "読み込み中..", photo: "画像" },
     keyCategory: "",
     keyPlace: "",
     keyDate: "",
