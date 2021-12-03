@@ -39,6 +39,7 @@ const routes = [
     name: "Chat",
     component: Chat,
   },
+  {
     path: "/login2",
     name: "Login2",
     component: Login2,
