@@ -124,8 +124,8 @@ export default {
   border-radius: 10px;
 }
 
-.name {
-}
+/* .name {
+} */
 
 .date__title {
   margin-right: 10px;
