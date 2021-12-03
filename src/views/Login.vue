@@ -23,10 +23,15 @@
           </button>
         </div>
         <div class="mt-2">
+          <button class="button" block variant="primary" @click="signOut">
+            ログアウト
+          </button>
+        </div>
+        <!-- <div class="mt-2">
           <alert v-model="showError" dismissible variant="danger">{{
             errorMessage
           }}</alert>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -53,7 +58,7 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           console.log(result)
-          router.push("/success")
+          router.push("/")
         })
         .catch((error) => {
           console.log(error)
@@ -63,13 +68,27 @@ export default {
     },
     googleLogin() {
       const provider = new firebase.auth.GoogleAuthProvider()
-
+      firebase.auth().languageCode = "ja"
       firebase
         .auth()
         .signInWithPopup(provider)
         .then((result) => {
           console.log(result.user)
-          router.push("/success")
+          router.push("/")
+        })
+        .catch((error) => {
+          console.log(error)
+          this.errorMessage = error.message
+          this.showError = true
+        })
+    },
+    signOut() {
+      firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          console.log()
+          router.push("/")
         })
         .catch((error) => {
           console.log(error)

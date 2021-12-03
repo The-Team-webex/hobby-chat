@@ -3,9 +3,9 @@ import VueRouter from "vue-router"
 import MainBoard from "../components/MainBoard.vue"
 import PostForm from "../components/PostForm.vue"
 import DetailPage from "../components/DetailPage.vue"
+import Chat from "../components/chat/Chat.vue"
 import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
-
 
 Vue.use(VueRouter)
 
@@ -35,6 +35,10 @@ const routes = [
     component: DetailPage,
   },
   {
+    path: "/chat/:id",
+    name: "Chat",
+    component: Chat,
+  },
     path: "/login2",
     name: "Login2",
     component: Login2,
@@ -44,7 +48,6 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
-
 ]
 
 const router = new VueRouter({

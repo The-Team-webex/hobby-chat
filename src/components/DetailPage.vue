@@ -9,6 +9,7 @@
         <h1>{{ this.posts.title }}</h1>
       </div>
     </div>
+    <div class="chat__button" @click="showChat">チャット入場</div>
   </div>
 </template>
 
@@ -29,6 +30,11 @@ export default {
       .then((snapshot) => {
         this.posts = snapshot.data()
       })
+  },
+  methods: {
+    showChat() {
+      return this.$router.push("/chat/id")
+    },
   },
 }
 </script>
