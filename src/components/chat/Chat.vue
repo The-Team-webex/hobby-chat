@@ -37,12 +37,7 @@ export default {
         username: this.username,
         message: this.inputMessage,
       }
-      firebase
-        .firestore()
-        .collection("messages")
-        .doc()
-        .add(createMessage)
-        .then((ref) => {})
+      firebase.firestore().collection("messages").doc().add(createMessage)
     },
   },
 }
