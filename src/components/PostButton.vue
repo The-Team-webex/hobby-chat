@@ -29,11 +29,12 @@
   height: 180px;
   border-radius: 50%;
   background: #00adb5; /*背景色*/
+  transition: all 0.3s;
 }
 
 .Button__circle:hover {
   cursor: pointer;
-  opacity: 0.9;
+  background-color: #03d2dd;
 }
 
 .Button__img {
@@ -50,7 +51,7 @@
   letter-spacing: 1px;
   font-size: 20px;
   position: absolute;
-  top: 60%;
+  top: 72%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
