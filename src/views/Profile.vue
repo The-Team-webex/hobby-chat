@@ -23,9 +23,6 @@ export default {
       this.$store.commit("changeName")
     },
   },
-  created: function () {
-    this.$store.getters.setName, this.$store.getters.getData
-  },
 
   //   mounted() {
   //     this.$store.commit("userData")

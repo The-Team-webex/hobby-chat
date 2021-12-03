@@ -48,6 +48,7 @@ export default new Vuex.Store({
     },
     changeName: function (state) {
       state.userData.name = state.userName
+      firebase.firestore().collection("users").doc()
     },
   },
   actions: {
@@ -84,6 +85,7 @@ export default new Vuex.Store({
     getData: function (state) {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
+          firebase.firestore()
           state.userData.id = user.uid
           state.userData.name = user.displayName
           state.userData.photo = user.photoURL
