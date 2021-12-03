@@ -1,5 +1,6 @@
 <template>
   <div class="MainBoard">
+    <Header />
     <SearchForm />
     <router-link to="/post-form"><PostButton /></router-link>
     <div
@@ -33,10 +34,12 @@
 <script>
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
+import Header from "@/components/Header.vue"
 export default {
   components: {
     PostButton,
     SearchForm,
+    Header,
   },
   data() {
     return {
@@ -49,53 +52,19 @@ export default {
     }
   },
 
-  methods: {
-    // filteringPosts: function () {
-    //   const posts = []
-    //   for (let i = 0; i < this.posts.length; i++) {
-    //     const post = this.posts[i]
-    //     if (
-    //       (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
-    //         post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
-    //         post.date.indexOf(this.$store.state.keyDate) !== -1) ||
-    //       post.title.indexOf(this.$store.state.keyWord) !== -1 ||
-    //       post.text.indexOf(this.$store.state.keyWord) !== -1
-    //     ) {
-    //       posts.push(post)
-    //     }
-    //   }
-    //   return posts
-    // },
-  },
-
   created() {
     this.$store.commit("created")
     this.posts = this.$store.state.posts
-  },
-
-  computed: {
-    //   filteredPosts: function () {
-    //     const posts = []
-    //     for (let i = 0; i < this.posts.length; i++) {
-    //       const post = this.posts[i]
-    //       if (
-    //         (post.category.indexOf(this.$store.state.keyCategory) !== -1 &&
-    //           post.place.indexOf(this.$store.state.keyPlace) !== -1 &&
-    //           post.date.indexOf(this.$store.state.keyDate) !== -1) ||
-    //         post.title.indexOf(this.$store.state.keyWord) !== -1 ||
-    //         post.text.indexOf(this.$store.state.keyWord) !== -1
-    //       ) {
-    //         posts.push(post)
-    //       }
-    //     }
-    //     return posts
-    //   },
-    // },
   },
 }
 </script>
 
 <style scoped>
+* {
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
 .Posted__forms {
   width: 1000px;
   margin: 0 auto;
@@ -103,7 +72,7 @@ export default {
 
 .Posted__form {
   width: 800px;
-  border: solid 2px #eeeeee;
+  border: solid 2px #d3d1d1;
   padding: 30px;
   border-radius: 10px;
   margin: 50px;
@@ -111,6 +80,7 @@ export default {
 
 .form__detail ul {
   list-style-type: none;
+  margin-bottom: 20px;
 }
 
 .form__detail ul li {
@@ -123,9 +93,6 @@ export default {
   color: #00adb5; /*文字色を白に*/
   border-radius: 10px;
 }
-
-/* .name {
-} */
 
 .date__title {
   margin-right: 10px;
@@ -140,13 +107,13 @@ export default {
 
 .texts__title {
   color: #00adb5;
-  padding-bottom: 12px;
+  padding: 12px;
   border-bottom: solid 2px #b6b6b6;
 }
 
 .texts__text {
   color: #393e46;
-  padding: 0px 50px;
+  padding: 20px 50px;
   word-break: break-all;
   overflow: hidden;
   display: -webkit-box;
@@ -157,7 +124,6 @@ export default {
 .post__button {
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 1px;
   height: 50px;
   width: 200px;
   margin: 0 auto;
@@ -165,7 +131,12 @@ export default {
   background: #00adb5;
   color: #fff;
   border-radius: 25px;
+  font-weight: normal;
   text-align: center;
   cursor: pointer;
+  transition: all 0.3s;
+}
+.post__button:hover {
+  background-color: #03d2dd;
 }
 </style>
