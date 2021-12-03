@@ -67,23 +67,22 @@ export default new Vuex.Store({
   },
   modules: {},
   getters: {
-    setName: function (state) {
-      const newDoc = firebase.firestore().collection("userData").doc().id
-      const userData = {
-        dataId: newDoc,
-        userId: state.userData.id,
-      }
+    setName: function () {
+      //const newDoc = firebase.firestore().collection("userData").doc().id
+
       firebase.auth().onAuthStateChanged((user) => {
-        if (user && state.userData.id !== user.uid) {
-          //新規ログインの場合？
-          firebase.firestore().collection("user").doc(newDoc).set(userData)
+        const userData = {
+          id: user.uid,
+          name: user.displayName,
+          photo: user.photoURL,
+        }
+        if (user) {
+          firebase.firestore().collection("user").doc(user.uid).set(userData)
         }
       })
     },
     getData: function (state) {
       firebase.auth().onAuthStateChanged((user) => {
-        // const dataId = firebase.firestore().collection("users").doc()
-        // const getData = firebase.firestore().collection("users").get()
         if (user) {
           state.userData.id = user.uid
           state.userData.name = user.displayName
