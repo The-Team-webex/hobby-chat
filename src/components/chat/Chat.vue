@@ -29,27 +29,46 @@ export default {
     return {
       inputMessage: "",
       messages: [],
+      userInfo: null,
     }
   },
   methods: {
     sendMessage() {
       const createMessage = {
-        username: this.username,
+        username: this.$store.state.userData.name,
+        profile: this.$store.state.userData.photo,
         message: this.inputMessage,
+        createdAt: Date.now(),
       }
-      firebase.firestore().collection("messages").doc().add(createMessage)
+      firebase
+        .firestore()
+        .collection("messages")
+        .doc(this.userInfo.uid)
+        .add(createMessage)
+        .then((ref) => {
+          this.messages.push({
+            id: ref.id,
+            ...createMessage,
+          })
+        })
+      this.inputMessage = ""
+      console.log(this.user.uid)
     },
   },
+  mounted() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.userInfo = user
+      console.log(user.uid)
+    })
+  },
+  created() {
+    firebase
+      .firestore()
+      .collection("messages")
+      .doc(this.userInfo.uid)
+      .onSnapshot((doc) => {
+        console.log("Current data: ", doc.data())
+      })
+  },
 }
-// created() {
-//   firebase
-//     .firestore()
-//     .collection("messages")
-//     .get()
-//     .then((snapshot) => {
-//       for (let i = 0; i < snapshot.docs.length; i++) {
-//         this.messages.push(snapshot.docs[i].data())
-//       }
-//     })
-// },
 </script>

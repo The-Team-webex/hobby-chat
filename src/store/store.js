@@ -90,7 +90,7 @@ export default new Vuex.Store({
           state.userData.name = user.displayName
           state.userData.photo = user.photoURL
           state.isAuth = true
-          console.log("ログインしています")
+          console.log("ログインしています", user)
         } else {
           state.isAuth = false
           console.log("ログインしていません")
