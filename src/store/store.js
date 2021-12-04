@@ -7,8 +7,12 @@ import firebase from "firebase"
 export default new Vuex.Store({
   state: {
     isAuth: false,
-    userData: { id: "", name: "読み込み中..", photo: "画像" },
-    userName: "",
+    userData: {
+      id: "",
+      name: "読み込み中..",
+      photo: "画像",
+      college: "読み込み中..",
+    },
     keyCategory: "",
     keyPlace: "",
     keyDate: "",
@@ -46,56 +50,8 @@ export default new Vuex.Store({
         }
       }
     },
-    changeName: function (state) {
-      state.userData.name = state.userName
-      firebase.firestore().collection("users").doc()
-    },
   },
-  actions: {
-    // created: function (state) {
-    //   firebase
-    //     .firestore()
-    //     .collection("posts")
-    //     .get()
-    //     .then((snapshot) => {
-    //       state.filteredPosts.length = 0
-    //       for (let i = 0; i < snapshot.docs.length; i++) {
-    //         state.posts.push(snapshot.docs[i].data())
-    //         state.filteredPosts.push(snapshot.docs[i].data())
-    //       }
-    //     })
-    // },
-  },
+  actions: {},
   modules: {},
-  getters: {
-    setName: function () {
-      //const newDoc = firebase.firestore().collection("userData").doc().id
-
-      firebase.auth().onAuthStateChanged((user) => {
-        const userData = {
-          id: user.uid,
-          name: user.displayName,
-          photo: user.photoURL,
-        }
-        if (user) {
-          firebase.firestore().collection("user").doc(user.uid).set(userData)
-        }
-      })
-    },
-    getData: function (state) {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          firebase.firestore()
-          state.userData.id = user.uid
-          state.userData.name = user.displayName
-          state.userData.photo = user.photoURL
-          state.isAuth = true
-          console.log("ログインしています")
-        } else {
-          state.isAuth = false
-          console.log("ログインしていません")
-        }
-      })
-    },
-  },
+  getters: {},
 })

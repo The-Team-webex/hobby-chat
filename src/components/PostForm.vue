@@ -1,10 +1,6 @@
 <template>
   <div class="PostForm">
     <h1 class="PostForm__title">投稿フォーム</h1>
-    <div class="Poster__name">
-      <h3 class="Name__title title">名前</h3>
-      <input class="name__input block__title" type="text" v-model="inputName" />
-    </div>
     <div class="Form__detail">
       <div class="category__parts">
         <div class="Form__category form-size">
@@ -118,7 +114,6 @@ import firebase from "firebase"
 export default {
   data() {
     return {
-      inputName: "",
       inputCategory: "",
       inputPlace: "",
       inputTitle: "",
@@ -130,31 +125,34 @@ export default {
   },
   methods: {
     PostForm: function () {
-      const newDoc = firebase.firestore().collection("posts").doc().id
-      const post = {
-        name: this.inputName,
-        category: this.inputCategory,
-        place: this.inputPlace,
-        title: this.inputTitle,
-        text: this.inputText,
-        date: this.inputDate,
-        time: this.inputTime,
-        id: newDoc,
-      }
-      if (
-        this.inputName !== "" &&
-        this.inputCategory !== "" &&
-        this.inputPlace !== "" &&
-        this.inputTitle !== "" &&
-        this.inputText !== "" &&
-        this.inputDate !== "" &&
-        this.inputTime !== ""
-      ) {
-        this.posts.push(post)
-        firebase.firestore().collection("posts").doc(newDoc).set(post)
-        alert("投稿が完了しました！")
-        this.$router.push("/")
-      }
+      firebase.auth().onAuthStateChanged((user) => {
+        const newDoc = firebase.firestore().collection("posts").doc().id
+        const post = {
+          name: this.$store.state.userData.name,
+          photo: user.photoURL,
+          category: this.inputCategory,
+          place: this.inputPlace,
+          title: this.inputTitle,
+          text: this.inputText,
+          date: this.inputDate,
+          time: this.inputTime,
+          dataId: newDoc,
+          userId: user.uid,
+        }
+        if (
+          this.inputCategory !== "" &&
+          this.inputPlace !== "" &&
+          this.inputTitle !== "" &&
+          this.inputText !== "" &&
+          this.inputDate !== "" &&
+          this.inputTime !== ""
+        ) {
+          this.posts.push(post)
+          firebase.firestore().collection("posts").doc(newDoc).set(post)
+          alert("投稿が完了しました！")
+          this.$router.push("/")
+        }
+      })
     },
   },
 }
