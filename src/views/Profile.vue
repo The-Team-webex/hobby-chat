@@ -18,10 +18,11 @@
     <h3 class="text">大学</h3>
     <div v-if="canEditCollege">
       <input type="text" placeholder="名前を変更" v-model="userCollege" />
+      <div class="text__1">大学</div>
       <div class="edit__button" v-on:click="cancelCollege">キャンセル</div>
     </div>
     <div v-else>
-      <h1 class="profile__text">{{ $store.state.userData.college }}</h1>
+      <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
       <div class="edit__button" v-on:click="editCollege">編集</div>
     </div>
     <button @click="changeProfile">変更</button>
@@ -91,4 +92,9 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.text__1 {
+  display: inline-block;
+  margin-left: 5px;
+}
+</style>

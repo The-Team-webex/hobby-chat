@@ -14,7 +14,10 @@
             <img v-bind:src="post.photo" alt="" class="profile__img" />
             <div class="profile__name">
               <h4 class="name">投稿者</h4>
-              <h3>{{ post.name }}<span class="name">さん</span></h3>
+              <h3>
+                {{ post.college }}大学/{{ post.name
+                }}<span class="name">さん</span>
+              </h3>
             </div>
           </div>
           <ul>
@@ -116,6 +119,9 @@ export default {
 
 .name {
   font-size: 15px;
+}
+
+.college__name {
 }
 
 .date__title {

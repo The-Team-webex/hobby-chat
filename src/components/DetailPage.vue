@@ -9,7 +9,10 @@
           <img v-bind:src="posts.photo" alt="" class="profile__img" />
           <div class="profile__name">
             <h4 class="name">投稿者</h4>
-            <h3>{{ posts.name }}<span class="name">さん</span></h3>
+            <h3>
+              {{ posts.college }}大学/{{ posts.name
+              }}<span class="name">さん</span>
+            </h3>
           </div>
         </div>
         <ul>
