@@ -130,6 +130,7 @@ export default {
         const post = {
           name: this.$store.state.userData.name,
           photo: user.photoURL,
+          college: this.$store.state.userData.college,
           category: this.inputCategory,
           place: this.inputPlace,
           title: this.inputTitle,
