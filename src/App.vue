@@ -2,11 +2,20 @@
   <div id="app">
     <div class="header" id="nav">
       <router-link class="header-list" to="/">Home</router-link>
-      <router-link class="header-list" to="/login">Login</router-link>
+      <Login2 class="header-list" />
     </div>
     <router-view />
   </div>
 </template>
+
+<script>
+import Login2 from "./views/Login2.vue"
+export default {
+  components: {
+    Login2,
+  },
+}
+</script>
 
 <style>
 /* #app {
@@ -51,21 +60,9 @@
   border-left: 2px solid black;
   padding: 0 40px;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .header-list:hover {
   background-color: rgb(231, 231, 231);
 }
 </style>
-
-<script>
-export default {
-  components: {},
-  // methods: {
-  //   post: function () {
-  //     setTimeout(() => {
-  //       window.location.href = "/post-form"
-  //     }, 5000)
-  //   },
-  // },
-}
-</script>

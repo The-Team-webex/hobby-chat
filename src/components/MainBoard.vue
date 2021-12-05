@@ -10,12 +10,19 @@
     >
       <div class="Posted__form">
         <div class="form__detail">
+          <div class="form__profile">
+            <img v-bind:src="post.photo" alt="" class="profile__img" />
+            <div class="profile__name">
+              <h4 class="name">投稿者</h4>
+              <h3>{{ post.name }}<span class="name">さん</span></h3>
+            </div>
+          </div>
           <ul>
             <li class="tag">#{{ post.category }}</li>
             <li class="tag">#{{ post.place }}</li>
             <li class="date">
               <span class="date__title">開催日時</span>{{ post.date }} /
-              {{ post.time }}〜
+              {{ post.time }}
             </li>
           </ul>
         </div>
@@ -23,9 +30,9 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
-        <router-link :to="{ name: `DetailPage`, params: { id: post.id } }"
-          ><div class="post__button">詳細を見る</div></router-link
-        >
+        <router-link :to="{ name: `DetailPage`, params: { id: post.dataId } }"
+          ><div class="post__button">詳細を見る</div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -73,7 +80,7 @@ export default {
 .Posted__form {
   width: 800px;
   border: solid 2px #d3d1d1;
-  padding: 30px;
+  padding: 40px;
   border-radius: 10px;
   margin: 50px;
 }
@@ -92,6 +99,23 @@ export default {
   font-weight: bold; /*文字を太字に*/
   color: #00adb5; /*文字色を白に*/
   border-radius: 10px;
+}
+
+.form__profile {
+  height: 80px;
+}
+
+.profile__img {
+  width: 60px;
+  margin-top: 10px;
+}
+
+.profile__name {
+  display: inline-block;
+}
+
+.name {
+  font-size: 15px;
 }
 
 .date__title {

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <button @click="logout" v-if="$store.state.isAuth">ログアウト</button>
-    <button @click="login" v-else>ログイン</button>
+    <div @click="logout" v-if="$store.state.isAuth">ログアウト</div>
+    <div @click="login" v-else>ログイン</div>
   </div>
 </template>
 <script>
@@ -20,7 +20,35 @@ export default {
     },
   },
   created: function () {
-    this.$store.getters.setName, this.$store.getters.getData
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            if (snapshot.exists) {
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            } else {
+              const userData = {
+                id: user.uid,
+                name: user.displayName,
+                photo: user.photoURL,
+                college: "未設定",
+              }
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user.uid)
+                .set(userData)
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            }
+          })
+      }
+    })
 
     firebase.auth().onAuthStateChanged((user) => {
       // if (user && this.$store.state.userData.id === "") {
