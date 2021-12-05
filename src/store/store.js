@@ -53,5 +53,35 @@ export default new Vuex.Store({
   },
   actions: {},
   modules: {},
-  getters: {},
+  getters: {
+    setName: function () {
+      //const newDoc = firebase.firestore().collection("userData").doc().id
+
+      firebase.auth().onAuthStateChanged((user) => {
+        const userData = {
+          id: user.uid,
+          name: user.displayName,
+          photo: user.photoURL,
+        }
+        if (user) {
+          firebase.firestore().collection("user").doc(user.uid).set(userData)
+        }
+      })
+    },
+    getData: function (state) {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          firebase.firestore()
+          state.userData.id = user.uid
+          state.userData.name = user.displayName
+          state.userData.photo = user.photoURL
+          state.isAuth = true
+          console.log("ログインしています", user)
+        } else {
+          state.isAuth = false
+          console.log("ログインしていません")
+        }
+      })
+    },
+  },
 })

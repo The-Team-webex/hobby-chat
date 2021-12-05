@@ -2,19 +2,28 @@
   <div class="chat-room">
     <section class="chat-box">
       <div v-for="(message, index) in messages" :key="index">
-        <span class="username">{{ $store.state.user.displayName }}</span>
+        <span class="photo">
+          <img :src="message.photoURL" :alt="message.photoURL"
+        /></span>
+        <span class="name">{{ message.displayName }}</span>
         <span class="content">{{ message.content }}</span>
-        <!-- <span class="date">{{ message.createdAt }}</span> -->
+        <span class="date"
+          >{{ message.createdAt.getMonth() + 1 }}月{{
+            message.createdAt.getDate()
+          }}日{{ message.createdAt.getHours() }}時{{
+            message.createdAt.getMinutes()
+          }}分</span
+        >
       </div>
     </section>
-    <div class="input-box" @click="sendMessage">
+    <div class="input-box">
       <input
         v-model="inputMessage"
         @keyup.enter.prevent="sendMessage"
         type="text"
         placeholder="メッセージを入力して下さい。"
       />
-      <button type="submit">
+      <button @click="sendMessage">
         <img src="send-texting.svg" alt="send" />
       </button>
     </div>
@@ -31,25 +40,43 @@ export default {
       messages: [],
     }
   },
+  mounted() {
+    firebase
+      .firestore()
+      .collection("chatrooms")
+      .doc(this.$route.params.id)
+      .collection("messages")
+      .orderBy("createdAt")
+      .onSnapshot((querySnap) => {
+        this.messages = querySnap.docs.map((doc) => {
+          const data = doc.data()
+          return { ...data, createdAt: data.createdAt.toDate() }
+        })
+      })
+  },
   methods: {
     sendMessage() {
-      const createMessage = {
-        username: this.username,
-        message: this.inputMessage,
+      if (this.$store.state.isAuth != null) {
+        // let updateUserInfo = firebase.auth().currentUser
+        const messageInfo = {
+          userUid: this.$store.state.userData.id,
+          displayName: this.$store.state.userData.name,
+          photoURL: this.$store.state.userData.photo,
+          content: this.inputMessage,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        }
+        firebase
+          .firestore()
+          .collection("chatrooms")
+          .doc(this.$route.params.id)
+          .collection("messages")
+          .add(messageInfo)
+          .then(() => {
+            console.log("save at console.log")
+          })
+        this.inputMessage = ""
       }
-      firebase.firestore().collection("messages").doc().add(createMessage)
     },
   },
 }
-// created() {
-//   firebase
-//     .firestore()
-//     .collection("messages")
-//     .get()
-//     .then((snapshot) => {
-//       for (let i = 0; i < snapshot.docs.length; i++) {
-//         this.messages.push(snapshot.docs[i].data())
-//       }
-//     })
-// },
 </script>
