@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <button @click="logout" v-if="$store.state.isAuth">ログアウト</button>
-    <button @click="login" v-else>ログイン</button>
+    <span @click="logout" v-if="$store.state.isAuth">Logout</span>
+    <span @click="login" v-else>Login</span>
   </div>
 </template>
 <script>

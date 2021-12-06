@@ -2,7 +2,7 @@
   <div id="app">
     <div class="header" id="nav">
       <router-link class="header-list" to="/">Home</router-link>
-      <router-link class="header-list" to="/login">Login</router-link>
+      <span class="header-list"><Login2 /></span>
     </div>
     <router-view />
   </div>
@@ -29,6 +29,9 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 } */
+body {
+  margin: 0;
+}
 
 * {
   margin: 0;
@@ -58,8 +61,11 @@
 </style>
 
 <script>
+import Login2 from "@/views/Login2.vue"
 export default {
-  components: {},
+  components: {
+    Login2,
+  },
   // methods: {
   //   post: function () {
   //     setTimeout(() => {

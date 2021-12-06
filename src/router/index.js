@@ -6,7 +6,6 @@ import DetailPage from "../components/DetailPage.vue"
 import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,15 +13,6 @@ const routes = [
     path: "/",
     name: "MainBoard",
     component: MainBoard,
-  },
-  {
-    path: "/login",
-    name: "Login",
-    // route level code-splitting
-    // this generates a separate chunk (login.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
   },
   {
     path: "/post-form",
@@ -44,7 +34,6 @@ const routes = [
     name: "Profile",
     component: Profile,
   },
-
 ]
 
 const router = new VueRouter({
