@@ -22,6 +22,11 @@
   bottom: 50px;
   right: 60px;
 }
+@media screen and (max-width: 1319px) {
+  .Home__post-button {
+    top: 200px;
+  }
+}
 
 .Button__circle {
   position: relative;

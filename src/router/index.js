@@ -15,7 +15,6 @@ const routes = [
     name: "MainBoard",
     component: MainBoard,
   },
-
   {
     path: "/post-form",
     name: "PostForm",

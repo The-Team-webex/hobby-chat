@@ -138,16 +138,21 @@ export default {
 }
 
 .Posted__forms {
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 
 .Posted__form {
-  width: 800px;
+  width: 50%;
   border: solid 2px #d3d1d1;
   padding: 40px;
   border-radius: 10px;
-  margin: 50px;
+  margin: 70px auto;
+}
+@media screen and (max-width: 1319px) {
+  .Posted__form {
+    width: 80%;
+  }
 }
 
 .form__detail ul {
