@@ -156,6 +156,16 @@ export default {
       })
     },
   },
+  computed: {
+    isAuth: function () {
+      return this.$store.getters.getAuth
+    },
+  },
+  // watch:{
+  //   isAuth:(true,false){
+  //      return this.$router.push("/")
+  //   }
+  // }
 }
 </script>
 

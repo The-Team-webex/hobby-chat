@@ -7,6 +7,8 @@
         /></span>
         <span class="name">{{ message.displayName }}</span>
         <span class="content">{{ message.content }}</span>
+
+
         <span class="date"
           >{{ message.createdAt.getMonth() + 1 }}月{{
             message.createdAt.getDate()
@@ -17,6 +19,7 @@
       </div>
     </section>
     <div class="input-box">
+
       <input
         v-model="inputMessage"
         @keyup.enter.prevent="sendMessage"

@@ -54,6 +54,10 @@ export default new Vuex.Store({
   actions: {},
   modules: {},
   getters: {
+
+    getAuth: function (state) {
+      return state.isAuth
+
     setName: function () {
       //const newDoc = firebase.firestore().collection("userData").doc().id
 
@@ -82,6 +86,7 @@ export default new Vuex.Store({
           console.log("ログインしていません")
         }
       })
+
     },
   },
 })
