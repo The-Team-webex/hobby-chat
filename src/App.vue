@@ -2,7 +2,7 @@
   <div id="app">
     <div class="header" id="nav">
       <router-link class="header-list" to="/">Home</router-link>
-      <Login2 class="header-list" />
+      <span class="header-list"><Login2 /></span>
     </div>
     <router-view />
   </div>
@@ -38,6 +38,9 @@ export default {
 #nav a.router-link-exact-active {
   color: #42b983;
 } */
+body {
+  margin: 0;
+}
 
 * {
   margin: 0;
@@ -66,3 +69,19 @@ export default {
   background-color: rgb(231, 231, 231);
 }
 </style>
+
+<script>
+import Login2 from "@/views/Login2.vue"
+export default {
+  components: {
+    Login2,
+  },
+  // methods: {
+  //   post: function () {
+  //     setTimeout(() => {
+  //       window.location.href = "/post-form"
+  //     }, 5000)
+  //   },
+  // },
+}
+</script>

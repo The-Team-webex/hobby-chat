@@ -103,10 +103,16 @@ export default {
 .SearchForm {
   margin: 60px auto 0;
   padding-bottom: 50px;
+  max-width: 1300px;
   width: 60%;
   height: 100px;
   background-color: #00adb5;
   position: relative;
+}
+@media screen and (max-width: 1440px) {
+  .SearchForm {
+    width: 90%;
+  }
 }
 
 .form__title {
@@ -120,33 +126,61 @@ export default {
 .select-part {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .Category__select {
   padding: 10px 5px;
-  margin-right: 40px;
+  margin-left: 170px;
   font-size: 100%;
+}
+@media screen and (max-width: 1783px) {
+  .Category__select {
+    margin-left: 150px;
+    margin-right: 70px;
+  }
+}
+@media screen and (max-width: 1477px) {
+  .Category__select {
+    margin-left: 100px;
+    margin-right: 10px;
+  }
 }
 
 .Place__select {
-  margin: 0 50px;
   font-size: 100%;
   padding: 10px 5px;
 }
 
 .input__select {
-  margin-left: 40px;
+  margin-right: 170px;
   padding: 10px 5px;
   font-size: 80%;
+}
+@media screen and (max-width: 1783px) {
+  .input__select {
+    margin-right: 150px;
+    margin-left: 70px;
+  }
+}
+@media screen and (max-width: 1477px) {
+  .input__select {
+    margin-right: 100px;
+    margin-left: 10px;
+  }
 }
 
 .search__button {
   position: absolute;
-  right: 15%;
+  right: 5%;
   bottom: 20%;
   float: right;
   cursor: pointer;
+}
+@media screen and (max-width: 1783px) {
+  .search__button {
+    right: 2%;
+  }
 }
 
 .button__circle {
