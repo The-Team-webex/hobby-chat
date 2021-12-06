@@ -157,15 +157,18 @@ export default {
     },
   },
   computed: {
-    isAuth: function () {
-      return this.$store.getters.getAuth
+    getAuth: function () {
+      return this.$store.state.isAuth
     },
   },
-  // watch:{
-  //   isAuth:(true,false){
-  //      return this.$router.push("/")
-  //   }
-  // }
+  watch: {
+    getAuth() {
+      if (this.getAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        this.$router.push("/")
+      }
+    },
+  },
 }
 </script>
 
