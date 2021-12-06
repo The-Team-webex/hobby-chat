@@ -20,7 +20,35 @@ export default {
     },
   },
   created: function () {
-    this.$store.getters.setName, this.$store.getters.getData
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            if (snapshot.exists) {
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            } else {
+              const userData = {
+                id: user.uid,
+                name: user.displayName,
+                photo: user.photoURL,
+                college: "未設定",
+              }
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user.uid)
+                .set(userData)
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            }
+          })
+      }
+    })
 
     firebase.auth().onAuthStateChanged((user) => {
       // if (user && this.$store.state.userData.id === "") {

@@ -8,6 +8,15 @@
   </div>
 </template>
 
+<script>
+import Login2 from "./views/Login2.vue"
+export default {
+  components: {
+    Login2,
+  },
+}
+</script>
+
 <style>
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -54,6 +63,7 @@ body {
   border-left: 2px solid black;
   padding: 0 40px;
   transition: all 0.2s;
+  cursor: pointer;
 }
 .header-list:hover {
   background-color: rgb(231, 231, 231);

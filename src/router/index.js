@@ -3,6 +3,7 @@ import VueRouter from "vue-router"
 import MainBoard from "../components/MainBoard.vue"
 import PostForm from "../components/PostForm.vue"
 import DetailPage from "../components/DetailPage.vue"
+import Chat from "../components/chat/Chat.vue"
 import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/detail-page/:id",
     name: "DetailPage",
     component: DetailPage,
+  },
+  {
+    path: "/chat/:id",
+    name: "Chat",
+    component: Chat,
   },
   {
     path: "/login2",
