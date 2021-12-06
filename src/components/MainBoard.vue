@@ -2,7 +2,20 @@
   <div class="MainBoard">
     <Header />
     <SearchForm />
-    <router-link to="/post-form"><PostButton /></router-link>
+    <router-link v-if="$store.state.isAuth" to="/post-form"
+      ><PostButton
+    /></router-link>
+
+    <div v-else class="Home__post-button" @click="login">
+      <div class="Button__circle">
+        <img class="Button__img" src="../assets/記事アイコン1 (1).png" alt="" />
+        <div class="Button__title">
+          <p>ログインして</p>
+          <p class="title__text">投稿する</p>
+        </div>
+      </div>
+    </div>
+
     <div
       class="Posted__forms"
       v-for="(post, index) in this.$store.state.filteredPosts"
@@ -45,6 +58,7 @@
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
 import Header from "@/components/Header.vue"
+import firebase from "firebase"
 export default {
   components: {
     PostButton,
@@ -62,9 +76,57 @@ export default {
     }
   },
 
+  methods: {
+    login: function () {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      firebase.auth().signInWithPopup(provider)
+    },
+  },
+
   created() {
     this.$store.commit("created")
     this.posts = this.$store.state.posts
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            if (snapshot.exists) {
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            } else {
+              const userData = {
+                id: user.uid,
+                name: user.displayName,
+                photo: user.photoURL,
+                college: "未設定",
+              }
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user.uid)
+                .set(userData)
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            }
+          })
+      }
+    })
+
+    firebase.auth().onAuthStateChanged((user) => {
+      // if (user && this.$store.state.userData.id === "") {
+      if (user) {
+        this.$store.state.isAuth = true
+        console.log("ログインしています")
+      } else {
+        this.$store.state.isAuth = false
+        console.log("ログインしていません")
+      }
+    })
   },
 }
 </script>
@@ -168,5 +230,48 @@ export default {
 }
 .post__button:hover {
   background-color: #03d2dd;
+}
+.Home__post-button {
+  position: fixed;
+  bottom: 50px;
+  right: 60px;
+}
+
+.Button__circle {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: #00adb5; /*背景色*/
+  transition: all 0.3s;
+}
+
+.Button__circle:hover {
+  cursor: pointer;
+  background-color: #03d2dd;
+}
+
+.Button__img {
+  position: absolute;
+  top: 30%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+}
+
+.Button__title {
+  color: white;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 18px;
+  width: 200px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title__text {
+  font-size: 20px;
 }
 </style>

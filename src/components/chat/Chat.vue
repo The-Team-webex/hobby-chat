@@ -4,10 +4,12 @@
       <div v-for="(message, index) in messages" :key="index">
         <span class="username">{{ $store.state.user.displayName }}</span>
         <span class="content">{{ message.content }}</span>
+
         <!-- <span class="date">{{ message.createdAt }}</span> -->
       </div>
     </section>
     <div class="input-box" @click="sendMessage">
+      {{ this.$route.params.id }}
       <input
         v-model="inputMessage"
         @keyup.enter.prevent="sendMessage"

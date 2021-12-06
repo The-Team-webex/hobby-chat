@@ -53,5 +53,9 @@ export default new Vuex.Store({
   },
   actions: {},
   modules: {},
-  getters: {},
+  getters: {
+    getAuth: function (state) {
+      return state.isAuth
+    },
+  },
 })
