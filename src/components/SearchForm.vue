@@ -100,6 +100,9 @@ export default {
 </script>
 
 <style scoped>
+body {
+  margin: 0;
+}
 .SearchForm {
   margin: 60px auto 0;
   padding-bottom: 50px;
@@ -128,6 +131,11 @@ export default {
   flex-direction: row;
   justify-content: space-around;
 }
+@media screen and (max-width: 763px) {
+  .select-part {
+    flex-direction: column;
+  }
+}
 
 .Category__select {
   padding: 10px 5px;
@@ -144,6 +152,12 @@ export default {
   .Category__select {
     margin-left: 100px;
     margin-right: 10px;
+  }
+}
+@media screen and (max-width: 763px) {
+  .Category__select {
+    display: inline-block;
+    widows: 40%;
   }
 }
 
