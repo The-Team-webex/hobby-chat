@@ -25,7 +25,7 @@
       <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
       <div class="edit__button" v-on:click="editCollege">編集</div>
     </div>
-    <button @click="changeProfile">変更</button>
+    <button class="change__button" @click="changeProfile">変更</button>
   </div>
 </template>
 <script>
@@ -96,5 +96,101 @@ export default {
 .text__1 {
   display: inline-block;
   margin-left: 5px;
+}
+
+.Profile {
+  background-color: rgb(231, 231, 231);
+  width: 60%;
+  margin: 100px auto 0;
+}
+@media screen and (max-width: 1012px) {
+  .Profile {
+    width: 80%;
+  }
+}
+
+.profile__img {
+  margin: 100px 0;
+  background-color: pink;
+  display: inline-block;
+  width: 10%;
+  height: auto;
+  border-radius: 50%;
+}
+@media screen and (max-width: 1440px) {
+  .profile__img {
+    width: 20%;
+  }
+}
+@media screen and (max-width: 650px) {
+  .profile__img {
+    width: 30%;
+  }
+}
+
+.text {
+  font-size: 200%;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.profile__text {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+  border-bottom: 3px solid black;
+  font-size: 250%;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 1185px) {
+  .profile__text {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 789px) {
+  .profile__text {
+    font-size: 150%;
+  }
+}
+
+.edit__button {
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 150%;
+  background-color: white;
+  margin-bottom: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.edit__button:hover {
+  background-color: cadetblue;
+  border: 1px solid cadetblue;
+  color: white;
+}
+
+.change__button {
+  width: 20%;
+  background-color: white;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 150%;
+  margin: 50px 0 60px;
+  transition: all 0.3s;
+}
+.change__button:hover {
+  background-color: cadetblue;
+  color: white;
+}
+@media screen and (max-width: 738px) {
+  .change__button {
+    width: 40%;
+  }
+}
+@media screen and (max-width: 351px) {
+  .change__button {
+    width: 60%;
+  }
 }
 </style>

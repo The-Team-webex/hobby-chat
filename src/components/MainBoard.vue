@@ -15,12 +15,12 @@
             <div class="profile__name">
               <h4 class="name">投稿者</h4>
               <h3>
-                {{ post.college }}大学/{{ post.name
-                }}<span class="name">さん</span>
+                <span class="new-line">{{ post.college }}大学/</span><span class="new-line">{{ post.name
+                }}<span class="name">さん</span></span>
               </h3>
             </div>
           </div>
-          <ul>
+          <ul class="tag-list">
             <li class="tag">#{{ post.category }}</li>
             <li class="tag">#{{ post.place }}</li>
             <li class="date">
@@ -74,6 +74,9 @@ export default {
   letter-spacing: 2px;
   text-decoration: none;
 }
+body {
+  margin: 0;
+}
 
 .Posted__forms {
   width: 100%;
@@ -110,23 +113,57 @@ export default {
 }
 
 .form__profile {
-  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: 0 auto 20px;
 }
 
 .profile__img {
-  width: 60px;
-  margin-top: 10px;
+  width: 15%;
+  height: 15%;
+  border-radius: 50%;
+}
+@media screen and (max-width: 1440px) {
+  .profile__img {
+    width: 25%;
+    height: 25%;
+  }
+}
+@media screen and (max-width: 1319px) {
+  .profile__img {
+    width: 20%;
+    height: 20%;
+  }
 }
 
 .profile__name {
   display: inline-block;
+  font-size: 140%;
+  margin-top: 10px;
+}
+@media screen and (max-width: 1319px) {
+  .profile__name {
+    margin-top: 30px;
+  }
+}
+@media screen and (max-width: 1173px) {
+  .profile__name {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 940px) {
+  .profile__name {
+    margin-top: 10px;
+  }
+}
+
+.new-line {
+  display: inline-block;
 }
 
 .name {
-  font-size: 15px;
-}
-
-.college__name {
+  font-size: 80%;
 }
 
 .date__title {
@@ -136,8 +173,43 @@ export default {
 .form__texts {
   background-color: #eeeeee;
   display: inline-block;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   width: 100%;
+}
+
+.tag-list {
+  padding: 0;
+}
+
+.tag {
+  font-size: 130%;
+}
+.date {
+  font-size: 130%;
+}
+@media screen and (max-width: 841px) {
+  .tag {
+    font-size: 100%;
+  }
+  .date {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 718px) {
+  .tag {
+    font-size: 70%;
+  }
+  .date {
+    font-size: 70%;
+  }
+}
+@media screen and (max-width: 594px) {
+  .tag {
+    font-size: 50%;
+  }
+  .date {
+    font-size: 50%;
+  }
 }
 
 .texts__title {
