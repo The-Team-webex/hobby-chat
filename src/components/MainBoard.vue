@@ -28,8 +28,10 @@
             <div class="profile__name">
               <h4 class="name">投稿者</h4>
               <h3>
-                <span class="new-line">{{ post.college }}大学/</span><span class="new-line">{{ post.name
-                }}<span class="name">さん</span></span>
+                <span class="new-line">{{ post.college }}大学/</span>
+                <span class="new-line"
+                  >{{ post.name }}<span class="name">さん</span></span
+                >
               </h3>
             </div>
           </div>
