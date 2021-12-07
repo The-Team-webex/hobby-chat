@@ -62,6 +62,20 @@ export default {
       return this.$router.push("/")
     },
   },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+
+  watch: {
+    getAuth: function () {
+      if (this.$store.state.isAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        return this.$router.push("/")
+      }
+    },
+  },
 }
 </script>
 

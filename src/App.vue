@@ -39,6 +39,7 @@ export default {
   color: #42b983;
 } */
 body {
+  top: 0;
   margin: 0;
 }
 
