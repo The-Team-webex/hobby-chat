@@ -28,7 +28,7 @@
         <h2 class="texts__title">{{ posts.title }}</h2>
         <h3 class="texts__text">{{ posts.text }}</h3>
       </div>
-      <router-link :to="{ name: `Chat`, params: { id: posts.userId } }"
+      <router-link :to="{ name: `Chat`, params: { id: posts.dataId } }"
         ><div class="chat__button button">気になる</div></router-link
       >
       <div class="back__button button" @click="backHome">戻る</div>
@@ -60,6 +60,20 @@ export default {
     },
     backHome() {
       return this.$router.push("/")
+    },
+  },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+
+  watch: {
+    getAuth: function () {
+      if (this.$store.state.isAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        return this.$router.push("/")
+      }
     },
   },
 }

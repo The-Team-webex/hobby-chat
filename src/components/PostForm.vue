@@ -156,6 +156,19 @@ export default {
       })
     },
   },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+  watch: {
+    getAuth() {
+      if (this.getAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        this.$router.push("/")
+      }
+    },
+  },
 }
 </script>
 

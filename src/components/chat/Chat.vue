@@ -50,6 +50,7 @@ export default {
       .onSnapshot((querySnap) => {
         this.messages = querySnap.docs.map((doc) => {
           const data = doc.data()
+          console.log(data)
           return { ...data, createdAt: data.createdAt.toDate() }
         })
       })
@@ -75,6 +76,76 @@ export default {
             console.log("save at console.log")
           })
         this.inputMessage = ""
+      }
+    },
+  },
+  created: function () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.$store.state.userData.id = user.uid
+        this.$store.state.userData.photo = user.photoURL
+        this.$store.state.isAuth = true
+        console.log("ログインしています")
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            this.$store.state.userData.name = snapshot.data().name
+            this.$store.state.userData.college = snapshot.data().college
+            this.userCollege = snapshot.data().college
+            this.userName = snapshot.data().name
+          })
+      }
+
+      // })
+    })
+  },
+            if (snapshot.exists) {
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            } else {
+              const userData = {
+                id: user.uid,
+                name: user.displayName,
+                photo: user.photoURL,
+                college: "未設定",
+              }
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user.uid)
+                .set(userData)
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            }
+          })
+      }
+    })
+
+    firebase.auth().onAuthStateChanged((user) => {
+      // if (user && this.$store.state.userData.id === "") {
+      if (user) {
+        this.$store.state.isAuth = true
+        console.log("ログインしています")
+      } else {
+        this.$store.state.isAuth = false
+        console.log("ログインしていません")
+      }
+    })
+  },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+
+  watch: {
+    getAuth: function () {
+      if (this.$store.state.isAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        return this.$router.push("/")
       }
     },
   },
