@@ -8,7 +8,6 @@
         <span class="name">{{ message.displayName }}</span>
         <span class="content">{{ message.content }}</span>
 
-
         <span class="date"
           >{{ message.createdAt.getMonth() + 1 }}月{{
             message.createdAt.getDate()
@@ -19,7 +18,6 @@
       </div>
     </section>
     <div class="input-box">
-
       <input
         v-model="inputMessage"
         @keyup.enter.prevent="sendMessage"
@@ -78,6 +76,62 @@ export default {
             console.log("save at console.log")
           })
         this.inputMessage = ""
+      }
+    },
+  },
+  created: function () {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        firebase
+          .firestore()
+          .collection("users")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            if (snapshot.exists) {
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            } else {
+              const userData = {
+                id: user.uid,
+                name: user.displayName,
+                photo: user.photoURL,
+                college: "未設定",
+              }
+              firebase
+                .firestore()
+                .collection("users")
+                .doc(user.uid)
+                .set(userData)
+              this.$store.state.userData.name = snapshot.data().name
+              this.$store.state.userData.college = snapshot.data().college
+            }
+          })
+      }
+    })
+
+    firebase.auth().onAuthStateChanged((user) => {
+      // if (user && this.$store.state.userData.id === "") {
+      if (user) {
+        this.$store.state.isAuth = true
+        console.log("ログインしています")
+      } else {
+        this.$store.state.isAuth = false
+        console.log("ログインしていません")
+      }
+    })
+  },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+
+  watch: {
+    getAuth: function () {
+      if (this.$store.state.isAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        return this.$router.push("/")
       }
     },
   },

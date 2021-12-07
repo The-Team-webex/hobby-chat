@@ -46,9 +46,15 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
-        <router-link :to="{ name: `DetailPage`, params: { id: post.dataId } }"
+        <router-link
+          v-if="$store.state.isAuth"
+          :to="{ name: `DetailPage`, params: { id: post.dataId } }"
           ><div class="post__button">詳細を見る</div>
         </router-link>
+
+        <div v-else @click="login" class="post__button2">
+          ログインして詳細を見る
+        </div>
       </div>
     </div>
   </div>
@@ -236,6 +242,26 @@ export default {
 .post__button:hover {
   background-color: #03d2dd;
 }
+
+.post__button2 {
+  font-size: 20px;
+  font-weight: bold;
+  height: 50px;
+  width: 300px;
+  margin: 0 auto;
+  line-height: 50px;
+  background: #00adb5;
+  color: #fff;
+  border-radius: 25px;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.post__button2:hover {
+  background-color: #03d2dd;
+}
+
 .Home__post-button {
   position: fixed;
   bottom: 50px;
