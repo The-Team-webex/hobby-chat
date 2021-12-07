@@ -7,7 +7,6 @@
         /></span>
         <span class="name">{{ message.displayName }}</span>
         <span class="content">{{ message.content }}</span>
-
         <span class="date"
           >{{ message.createdAt.getMonth() + 1 }}月{{
             message.createdAt.getDate()
@@ -51,6 +50,7 @@ export default {
       .onSnapshot((querySnap) => {
         this.messages = querySnap.docs.map((doc) => {
           const data = doc.data()
+          console.log(data)
           return { ...data, createdAt: data.createdAt.toDate() }
         })
       })
@@ -82,12 +82,26 @@ export default {
   created: function () {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.$store.state.userData.id = user.uid
+        this.$store.state.userData.photo = user.photoURL
+        this.$store.state.isAuth = true
+        console.log("ログインしています")
         firebase
           .firestore()
           .collection("users")
           .doc(user.uid)
           .get()
           .then((snapshot) => {
+            this.$store.state.userData.name = snapshot.data().name
+            this.$store.state.userData.college = snapshot.data().college
+            this.userCollege = snapshot.data().college
+            this.userName = snapshot.data().name
+          })
+      }
+
+      // })
+    })
+  },
             if (snapshot.exists) {
               this.$store.state.userData.name = snapshot.data().name
               this.$store.state.userData.college = snapshot.data().college
