@@ -85,9 +85,21 @@ export default {
             this.userName = snapshot.data().name
           })
       }
-
-      // })
     })
+  },
+  computed: {
+    getAuth: function () {
+      return this.$store.state.isAuth
+    },
+  },
+
+  watch: {
+    getAuth: function () {
+      if (this.$store.state.isAuth === false) {
+        alert("ログアウトしたのでホームに戻ります")
+        return this.$router.push("/")
+      }
+    },
   },
 }
 </script>
