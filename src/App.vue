@@ -27,7 +27,9 @@ export default {
 }
 
 .header {
-  text-align: right;
+  display: flex;
+  justify-content: right;
+  text-align: center;
   height: 80px;
   border-bottom: 2px solid black;
   display: fixed;
@@ -38,6 +40,7 @@ export default {
   color: black;
   text-decoration: none;
   display: inline-block;
+  width: 20%;
   line-height: 80px;
   font-size: 170%;
   border-left: 2px solid black;

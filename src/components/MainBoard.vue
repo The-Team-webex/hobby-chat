@@ -38,8 +38,8 @@
             <li class="tag">#{{ post.category }}</li>
             <li class="tag">#{{ post.place }}</li>
             <li class="date">
-              <span class="date__title">開催日時</span>{{ post.date }} /
-              {{ post.time }}
+              <span class="date__title">開催日時</span
+              ><span class="date__num">{{ post.date }} / {{ post.time }}</span>
             </li>
           </ul>
         </div>
@@ -64,7 +64,6 @@
 <script>
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
-
 import firebase from "firebase"
 export default {
   components: {
@@ -142,13 +141,11 @@ export default {
   letter-spacing: 2px;
   text-decoration: none;
 }
-body {
-  margin: 0;
-}
 
 .Posted__forms {
   width: 100%;
   margin: 0 auto;
+  text-align: center;
 }
 
 .Posted__form {
@@ -168,61 +165,86 @@ body {
   list-style-type: none;
   margin-bottom: 20px;
 }
+@media screen and (max-width: 761px) {
+  .form__detail ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
 
 .form__detail ul li {
   display: inline-block;
   padding: 10px;
-  margin: 0px 10px; /*余白も指定できる*/
   vertical-align: middle; /*縦の表示位置も指定できる*/
   border: solid 2px #00adb5;
   font-weight: bold; /*文字を太字に*/
   color: #00adb5; /*文字色を白に*/
   border-radius: 10px;
+  margin: 0 10px;
+}
+@media screen and (max-width: 1443px) {
+  .form__detail ul li {
+    font-size: 100%;
+  }
+}
+@media screen and (max-width: 761px) {
+  .form__detail ul li {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
 }
 
 .form__profile {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
   width: 60%;
-  margin: 0 auto 20px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 1056px) {
+  .form__profile {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 761px) {
+  .form__profile {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .profile__img {
-  width: 15%;
-  height: 15%;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
+  margin-top: 20px;
 }
-@media screen and (max-width: 1440px) {
+@media screen and (max-width: 761px) {
   .profile__img {
-    width: 25%;
-    height: 25%;
+    margin: 0 auto;
   }
 }
-@media screen and (max-width: 1319px) {
+@media screen and (max-width: 500px) {
   .profile__img {
-    width: 20%;
-    height: 20%;
   }
 }
 
 .profile__name {
   display: inline-block;
   font-size: 140%;
-  margin-top: 10px;
+  margin-top: 10px auto 0;
+  width: 80%;
+  text-align: center;
 }
-@media screen and (max-width: 1319px) {
+@media screen and (max-width: 761px) {
   .profile__name {
-    margin-top: 30px;
+    margin: 0 auto;
   }
 }
-@media screen and (max-width: 1173px) {
+@media screen and (max-width: 665px) {
   .profile__name {
-    font-size: 110%;
-  }
-}
-@media screen and (max-width: 940px) {
-  .profile__name {
-    margin-top: 10px;
+    font-size: 90%;
   }
 }
 
@@ -235,7 +257,11 @@ body {
 }
 
 .date__title {
+  display: inline-block;
   margin-right: 10px;
+}
+.date__num {
+  display: inline-block;
 }
 
 .form__texts {
@@ -297,19 +323,29 @@ body {
 }
 
 .post__button {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 150%;
   height: 50px;
-  width: 200px;
+  width: 50%;
   margin: 0 auto;
+  padding: 10px 0;
   line-height: 50px;
   background: #00adb5;
   color: #fff;
-  border-radius: 25px;
+  border-radius: 50px;
   font-weight: normal;
   text-align: center;
   cursor: pointer;
   transition: all 0.3s;
+}
+@media screen and (max-width: 700px) {
+  .post__button {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 472px) {
+  .post__button {
+    width: 80%;
+  }
 }
 .post__button:hover {
   background-color: #03d2dd;
