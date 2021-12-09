@@ -141,9 +141,6 @@ export default {
 
 .profile__name {
   display: inline-block;
-}
-
-.name {
   font-size: 15px;
 }
 

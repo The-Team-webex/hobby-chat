@@ -1,6 +1,5 @@
 <template>
   <div class="MainBoard">
-    <Header />
     <SearchForm />
     <router-link v-if="$store.state.isAuth" to="/post-form"
       ><PostButton
@@ -65,13 +64,12 @@
 <script>
 import PostButton from "@/components/PostButton.vue"
 import SearchForm from "@/components/SearchForm.vue"
-import Header from "@/components/Header.vue"
+
 import firebase from "firebase"
 export default {
   components: {
     PostButton,
     SearchForm,
-    Header,
   },
   data() {
     return {
