@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <div class="header" id="nav">
-      <div class="header-right">
-        <router-link class="header-list" to="/">Home</router-link>
-        <router-link class="header-list" v-if="$store.state.isAuth" to="/header"
-          >Profile</router-link
-        >
-        <span class="header-list"><Login2 /></span>
-      </div>
+      <img src="./assets/ロゴ (0-00-00-00).png" alt="" class="logo" />
+      <router-link to="/profile" v-if="$store.state.isAuth" class="header-list"
+        >プロフィール</router-link
+      >
+      <router-link class="header-list" to="/">Home</router-link>
+      <span class="header-list"><Login2 /></span>
     </div>
     <router-view />
   </div>
@@ -51,6 +50,13 @@ export default {
 }
 .header-list:hover {
   background-color: rgb(231, 231, 231);
+}
+
+.logo {
+  width: 260px;
+  float: left;
+  padding-top: 5px;
+  padding-left: 30px;
 }
 </style>
 
