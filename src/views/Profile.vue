@@ -1,31 +1,34 @@
 <template>
-  <div class="Profile">
-    <img
-      v-bind:src="$store.state.userData.photo"
-      alt="読み込み中.."
-      class="profile__img"
-    />
-    <h3 class="text">名前</h3>
-    <div v-if="canEditName">
-      <input type="text" placeholder="名前を変更" v-model="userName" />
-      <div class="edit__button" v-on:click="cancelName">キャンセル</div>
-    </div>
-    <div v-else>
-      <h1 class="profile__text">{{ $store.state.userData.name }}</h1>
-      <div class="edit__button" v-on:click="editName">編集</div>
-    </div>
+  <div>
+    <router-link to="/mypage">自分の投稿一覧</router-link>
+    <div class="Profile">
+      <img
+        v-bind:src="$store.state.userData.photo"
+        alt="読み込み中.."
+        class="profile__img"
+      />
+      <h3 class="text">名前</h3>
+      <div v-if="canEditName">
+        <input type="text" placeholder="名前を変更" v-model="userName" />
+        <div class="edit__button" v-on:click="cancelName">キャンセル</div>
+      </div>
+      <div v-else>
+        <h1 class="profile__text">{{ $store.state.userData.name }}</h1>
+        <div class="edit__button" v-on:click="editName">編集</div>
+      </div>
 
-    <h3 class="text">大学</h3>
-    <div v-if="canEditCollege">
-      <input type="text" placeholder="名前を変更" v-model="userCollege" />
-      <div class="text__1">大学</div>
-      <div class="edit__button" v-on:click="cancelCollege">キャンセル</div>
+      <h3 class="text">大学</h3>
+      <div v-if="canEditCollege">
+        <input type="text" placeholder="名前を変更" v-model="userCollege" />
+        <div class="text__1">大学</div>
+        <div class="edit__button" v-on:click="cancelCollege">キャンセル</div>
+      </div>
+      <div v-else>
+        <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
+        <div class="edit__button" v-on:click="editCollege">編集</div>
+      </div>
+      <button class="change__button" @click="changeProfile">変更</button>
     </div>
-    <div v-else>
-      <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
-      <div class="edit__button" v-on:click="editCollege">編集</div>
-    </div>
-    <button class="change__button" @click="changeProfile">変更</button>
   </div>
 </template>
 <script>
@@ -113,7 +116,9 @@ export default {
 .Profile {
   background-color: rgb(231, 231, 231);
   width: 60%;
-  margin: 100px auto 0;
+  margin: 100px auto;
+  padding: 50px 0;
+  text-align: center;
 }
 @media screen and (max-width: 1012px) {
   .Profile {
