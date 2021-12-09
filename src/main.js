@@ -3,6 +3,9 @@ import App from "./App.vue"
 import "./firebase.js"
 import router from "./router"
 import store from "./store/store"
+import TextareaAutosize from "vue-textarea-autosize"
+
+Vue.use(TextareaAutosize)
 
 Vue.config.productionTip = false
 
