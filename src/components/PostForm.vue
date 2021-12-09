@@ -143,6 +143,7 @@ export default {
           time: this.inputTime,
           dataId: newDoc,
           userId: user.uid,
+          isClosed: false,
         }
         if (
           this.inputCategory !== "" &&
