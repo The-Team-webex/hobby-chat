@@ -110,7 +110,6 @@ export default {
 <style scoped>
 .text__1 {
   display: inline-block;
-  margin-left: 5px;
 }
 
 .Profile {
@@ -127,7 +126,6 @@ export default {
 }
 
 .profile__img {
-  margin: 100px 0;
   background-color: pink;
   display: inline-block;
   width: 10%;
@@ -150,11 +148,16 @@ export default {
   font-weight: 800;
   margin-bottom: 40px;
 }
+@media screen and (max-width: 1056px) {
+  .text {
+    font-size: 150%;
+  }
+}
 
 .profile__text {
   display: block;
   margin: 0 auto;
-  width: 40%;
+  width: 60%;
   border-bottom: 3px solid black;
   font-size: 250%;
   margin-bottom: 30px;
@@ -165,6 +168,11 @@ export default {
   }
 }
 @media screen and (max-width: 789px) {
+  .profile__text {
+    font-size: 200%;
+  }
+}
+@media screen and (max-width: 550px) {
   .profile__text {
     font-size: 150%;
   }
@@ -182,8 +190,8 @@ export default {
   transition: all 0.3s;
 }
 .edit__button:hover {
-  background-color: cadetblue;
-  border: 1px solid cadetblue;
+  background-color: rgb(76, 190, 196);
+  border: 1px solid rgb(76, 190, 196);
   color: white;
 }
 
@@ -193,11 +201,11 @@ export default {
   border-radius: 30px;
   padding: 10px 30px;
   font-size: 150%;
-  margin: 50px 0 60px;
+  margin: 50px 0 0;
   transition: all 0.3s;
 }
 .change__button:hover {
-  background-color: cadetblue;
+  background-color: rgb(76, 190, 196);
   color: white;
 }
 @media screen and (max-width: 738px) {
@@ -205,7 +213,7 @@ export default {
     width: 40%;
   }
 }
-@media screen and (max-width: 351px) {
+@media screen and (max-width: 366px) {
   .change__button {
     width: 60%;
   }

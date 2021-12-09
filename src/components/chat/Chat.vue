@@ -46,15 +46,16 @@
     </div>
 
     <div class="input-box">
-      <input
+      <textarea-autosize
+        class="input"
         v-model="inputMessage"
-        @keyup.enter.prevent="sendMessage"
-        type="text"
+        :min-height="30"
+        :max-height="350"
         placeholder="メッセージを入力して下さい。"
       />
-      <button @click="sendMessage">
-        <img src="send-texting.svg" alt="send" />
-      </button>
+      <span>
+        <button class="input-button" @click="sendMessage">送信</button>
+      </span>
     </div>
   </div>
 </template>
@@ -190,12 +191,33 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
 }
+
+.input-box {
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  width: 80%;
+  margin: 0rem 1rem;
+  padding: 2px;
+  background-color: #eeeeee;
+}
+
+.input-button {
+  font-size: large;
+  padding: 10px;
+}
 </style>
 
 <script>
 import firebase from "firebase"
+// import SendIcon from "./SendIcon.vue"
 
 export default {
+  components: {
+    // SendIcon,
+  },
   data() {
     return {
       inputMessage: "",

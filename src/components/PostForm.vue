@@ -6,7 +6,9 @@
         <div class="Form__category form-size">
           <h3 class="Category__title title">カテゴリー</h3>
           <select class="Category__select select-size" v-model="inputCategory">
-            <option value="" hidden>選択してください</option>
+            <option class="option-word" value="" hidden>
+              選択してください
+            </option>
 
             <option value="スポーツ">スポーツ</option>
             <option value="ゲーム">ゲーム</option>
@@ -16,7 +18,9 @@
         <div class="Form__place form-size">
           <h3 class="Place__title title">開催場所</h3>
           <select class="Place__select select-size" v-model="inputPlace">
-            <option value="" hidden>選択してください</option>
+            <option class="option-word" value="" hidden>
+              選択してください
+            </option>
             <optgroup label="関東">
               <option value="東京都">東京都</option>
               <option value="神奈川県">神奈川県</option>
@@ -181,22 +185,59 @@ export default {
 .PostForm {
   background-color: #eeeeee;
   width: 60%;
-  margin: 100px auto 70px;
+  margin: 80px auto 80px;
   padding: 50px 0;
 }
+@media screen and (max-width: 1440px) {
+  .PostForm {
+    width: 80%;
+  }
+}
+
 .PostForm__title {
   text-align: center;
+}
+@media screen and (max-width: 777px) {
+  .PostForm__title {
+    font-size: 150%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .PostForm__title {
+    font-size: 120%;
+  }
 }
 
 .title {
   padding: 30px 0 10px;
   font-size: 150%;
 }
+@media screen and (max-width: 777px) {
+  .title {
+    font-size: 120%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .title {
+    font-size: 100%;
+  }
+}
+
 .block__title {
-  width: 50%;
+  width: 54%;
   padding: 5px;
-  height: 30px;
-  font-size: 120%;
+  height: 32px;
+  font-size: 200%;
+}
+@media screen and (max-width: 1440px) {
+  .block__title {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 777px) {
+  .block__title {
+    font-size: 110%;
+  }
 }
 
 .Form__button {
@@ -220,50 +261,135 @@ export default {
 
 .category__parts {
   display: flex;
-  width: 51%;
-  margin: 10px auto 40px;
   flex-direction: row;
+  width: 61%;
+  margin: 10px auto 40px;
   justify-content: space-between;
+}
+@media screen and (max-width: 1440px) {
+  .category__parts {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 777px) {
+  .category__parts {
+    flex-direction: column;
+  }
+}
+
+.Form__category {
+  width: 50%;
+  text-align: center;
+}
+@media screen and (max-width: 777px) {
+  .Form__category {
+    width: 100%;
+  }
+}
+
+.Form__place {
+  width: 50%;
+  text-align: center;
+}
+@media screen and (max-width: 777px) {
+  .Form__place {
+    width: 100%;
+  }
 }
 
 .Category__select {
   font-size: 110%;
+  width: 80%;
 }
+@media screen and (max-width: 777px) {
+  .Category__select {
+    width: 90%;
+    font-size: 100%;
+  }
+}
+
 .Place__select {
   font-size: 110%;
+  width: 80%;
+}
+@media screen and (max-width: 777px) {
+  .Place__select {
+    width: 90%;
+    font-size: 100%;
+  }
 }
 
 .select-size {
-  height: 45%;
+  height: 60px;
   padding: 0 10px;
+}
+@media screen and (max-width: 777px) {
+  .select-size {
+    height: 60px;
+    padding: 0 10px;
+  }
 }
 
 .date-flex {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  background-color: pink;
+  font-size: 150%;
+}
+@media screen and (max-width: 777px) {
+  .date-flex {
+    flex-direction: column;
+  }
 }
 
 .left-date {
   width: 70%;
 }
+@media screen and (max-width: 777px) {
+  .left-date {
+    margin: 0 auto;
+    width: 99%;
+    margin-bottom: 40px;
+  }
+}
 .right-time {
   width: 30%;
+}
+@media screen and (max-width: 777px) {
+  .right-time {
+    margin: 0 auto;
+    width: 99%;
+  }
 }
 
 .input-size {
   height: 44px;
   font-size: 150%;
 }
+@media screen and (max-width: 777px) {
+  .input-size {
+    font-size: 110%;
+  }
+}
 
 .Form__date {
-  margin: 0 auto 40px;
-  width: 50%;
+  margin: 50px auto 40px;
+  width: 55%;
   padding: 5px;
+  text-align: center;
+}
+@media screen and (max-width: 1440px) {
+  .Form__date {
+    width: 81%;
+  }
+}
+
+.Form__title {
+  text-align: center;
 }
 
 .Form__text {
+  text-align: center;
   margin: 40px auto 50px;
 }
 </style>

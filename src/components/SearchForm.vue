@@ -82,6 +82,7 @@
           <img class="button__img" src="../assets/サーチアイコン.png" alt="" />
         </div>
       </div>
+      <span class="type__button">検索</span>
     </div>
   </div>
 </template>
@@ -100,21 +101,25 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
-}
 .SearchForm {
   margin: 60px auto 0;
-  padding-bottom: 50px;
+  text-align: center;
+  padding-bottom: 70px;
   max-width: 1300px;
   width: 60%;
   height: 100px;
   background-color: #00adb5;
+  border-radius: 10px;
   position: relative;
 }
 @media screen and (max-width: 1440px) {
   .SearchForm {
     width: 90%;
+  }
+}
+@media screen and (max-width: 783px) {
+  .SearchForm {
+    padding-bottom: 240px;
   }
 }
 
@@ -123,7 +128,12 @@ body {
   padding: 20px;
   font-weight: normal;
   font-size: 160%;
-  letter-spacing: 3px;
+  letter-spacing: 10px;
+}
+@media screen and (max-width: 783px) {
+  .form__title {
+    padding-bottom: 0;
+  }
 }
 
 .select-part {
@@ -131,7 +141,7 @@ body {
   flex-direction: row;
   justify-content: space-around;
 }
-@media screen and (max-width: 763px) {
+@media screen and (max-width: 783px) {
   .select-part {
     flex-direction: column;
   }
@@ -141,6 +151,7 @@ body {
   padding: 10px 5px;
   margin-left: 170px;
   font-size: 100%;
+  border-radius: 5px;
 }
 @media screen and (max-width: 1783px) {
   .Category__select {
@@ -154,22 +165,28 @@ body {
     margin-right: 10px;
   }
 }
-@media screen and (max-width: 763px) {
+@media screen and (max-width: 783px) {
   .Category__select {
-    display: inline-block;
-    widows: 40%;
+    width: 80%;
+    margin: 0 auto 20px;
+  }
+  .Place__select {
+    width: 80%;
+    margin: 0 auto 20px;
   }
 }
 
 .Place__select {
   font-size: 100%;
   padding: 10px 5px;
+  border-radius: 5px;
 }
 
 .input__select {
   margin-right: 170px;
   padding: 10px 5px;
   font-size: 80%;
+  border-radius: 5px;
 }
 @media screen and (max-width: 1783px) {
   .input__select {
@@ -183,6 +200,12 @@ body {
     margin-left: 10px;
   }
 }
+@media screen and (max-width: 783px) {
+  .input__select {
+    width: 78%;
+    margin: 0 auto;
+  }
+}
 
 .search__button {
   position: absolute;
@@ -194,6 +217,29 @@ body {
 @media screen and (max-width: 1783px) {
   .search__button {
     right: 2%;
+  }
+}
+@media screen and (max-width: 783px) {
+  .search__button {
+    display: none;
+  }
+}
+.type__button {
+  display: none;
+}
+@media screen and (max-width: 783px) {
+  .type__button {
+    display: inline-block;
+    width: 40%;
+    margin: 20px auto;
+    padding: 10px 0;
+    background-color: white;
+    border-radius: 30px;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  .type__button:hover {
+    background-color: chartreuse;
   }
 }
 
