@@ -1,9 +1,7 @@
 <template>
   <div class="header">
     <!-- <Login2 /> -->
-    <router-link to="/profile" v-if="$store.state.isAuth"
-      >プロフィール</router-link
-    >
+    <router-link to="/profile" v-if="$store.state.isAuth">Profile</router-link>
   </div>
 </template>
 <script>
@@ -14,3 +12,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.header {
+  display: inline-block;
+}
+</style>
