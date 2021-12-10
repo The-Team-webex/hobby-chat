@@ -252,10 +252,6 @@ export default {
     margin: 0 auto;
   }
 }
-@media screen and (max-width: 500px) {
-  .profile__img {
-  }
-}
 
 .profile__name {
   display: inline-block;
