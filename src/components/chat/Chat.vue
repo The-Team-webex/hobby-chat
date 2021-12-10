@@ -104,7 +104,7 @@
 }
 
 .detail-header {
-  width: 500px;
+  width: 60%;
   background-color: #00adb5;
   margin: 30px auto;
   text-align: center;

@@ -8,7 +8,6 @@ import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
 import MyPage from "../components/MyPage.vue"
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -31,11 +30,6 @@ const routes = [
     path: "/chat/:id",
     name: "Chat",
     component: Chat,
-  },
-  {
-    path: "/header",
-    name: "Header",
-    component: Header,
   },
   {
     path: "/login2",
