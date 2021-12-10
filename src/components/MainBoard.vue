@@ -389,6 +389,9 @@ export default {
   position: fixed;
   bottom: 50px;
   right: 60px;
+  background-color: #00adb5;
+  border-radius: 50%;
+  transition: all 0.3s;
 }
 @media screen and (max-width: 1319px) {
   .Home__post-button {
@@ -403,10 +406,11 @@ export default {
 
 .Button__circle {
   position: relative;
+  bottom: 5px;
+  right: 0;
   width: 180px;
   height: 180px;
   border-radius: 50%;
-  cursor: pointer;
   transition: all 0.3s;
 }
 @media screen and (max-width: 1319px) {
@@ -423,6 +427,14 @@ export default {
   left: 51%;
   transform: translate(-50%, -50%);
   width: 70px;
+}
+@media screen and (max-width: 1319px) {
+  .Button__img {
+    display: block;
+    left: 51%;
+    right: 49%;
+    width: 70px;
+  }
 }
 
 .Button__title {

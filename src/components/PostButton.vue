@@ -12,6 +12,8 @@
   position: fixed;
   bottom: 50px;
   right: 160px;
+  background-color: #00adb5;
+  border-radius: 50%;
   transition: all 0.3s;
 }
 @media screen and (max-width: 1319px) {
@@ -30,6 +32,8 @@
 
 .Button__circle {
   position: relative;
+  bottom: 5px;
+  right: 0;
   width: 180px;
   height: 180px;
   border-radius: 50%;

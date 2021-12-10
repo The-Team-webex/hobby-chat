@@ -210,17 +210,6 @@ export default {
   }
 }
 
-.search__button {
-}
-@media screen and (max-width: 1783px) {
-  .search__button {
-  }
-}
-@media screen and (max-width: 783px) {
-  .search__button {
-  }
-}
-
 .type__button {
   display: block;
   width: 150px;
