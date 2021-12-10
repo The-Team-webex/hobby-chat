@@ -1,41 +1,44 @@
 <template>
-  <div class="Profile">
-    <img
-      v-bind:src="$store.state.userData.photo"
-      alt="読み込み中.."
-      class="profile__img"
-    />
-    <h3 class="text">名前</h3>
-    <div class="edit-flex" v-if="canEditName">
-      <input
-        class="edit-text"
-        type="text"
-        placeholder="名前を変更"
-        v-model="userName"
+  <div>
+    <router-link to="/mypage">自分の投稿一覧</router-link>
+    <div class="Profile">
+      <img
+        v-bind:src="$store.state.userData.photo"
+        alt="読み込み中.."
+        class="profile__img"
       />
-      <div class="edit__button2" v-on:click="cancelName">キャンセル</div>
-    </div>
-    <div v-else>
-      <h1 class="profile__text">{{ $store.state.userData.name }}</h1>
-      <div class="edit__button" v-on:click="editName">編集</div>
-    </div>
-
-    <h3 class="text">大学</h3>
-    <div class="edit-flex" v-if="canEditCollege">
-      <div class="input-edit">
+      <h3 class="text">名前</h3>
+      <div class="edit-flex" v-if="canEditName">
         <input
-          class="edit-text2"
+          class="edit-text"
           type="text"
           placeholder="名前を変更"
-          v-model="userCollege"
+          v-model="userName"
         />
-        <div class="text__1">大学</div>
+        <div class="edit__button2" v-on:click="cancelName">キャンセル</div>
       </div>
-      <div class="edit__button2" v-on:click="cancelCollege">キャンセル</div>
-    </div>
-    <div v-else>
-      <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
-      <div class="edit__button" v-on:click="editCollege">編集</div>
+      <div v-else>
+        <h1 class="profile__text">{{ $store.state.userData.name }}</h1>
+        <div class="edit__button" v-on:click="editName">編集</div>
+      </div>
+
+      <h3 class="text">大学</h3>
+      <div class="edit-flex" v-if="canEditCollege">
+        <div class="input-edit">
+          <input
+            class="edit-text2"
+            type="text"
+            placeholder="名前を変更"
+            v-model="userCollege"
+          />
+          <div class="text__1">大学</div>
+        </div>
+        <div class="edit__button2" v-on:click="cancelCollege">キャンセル</div>
+      </div>
+      <div v-else>
+        <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
+        <div class="edit__button" v-on:click="editCollege">編集</div>
+      </div>
     </div>
   </div>
 </template>
