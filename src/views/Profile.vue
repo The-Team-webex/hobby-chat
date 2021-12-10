@@ -37,7 +37,6 @@
       <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
       <div class="edit__button" v-on:click="editCollege">編集</div>
     </div>
-    <button class="change__button" @click="changeProfile">変更</button>
   </div>
 </template>
 <script>

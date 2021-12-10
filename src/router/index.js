@@ -6,7 +6,8 @@ import DetailPage from "../components/DetailPage.vue"
 import Chat from "../components/chat/Chat.vue"
 import Login2 from "../views/Login2.vue"
 import Profile from "../views/Profile.vue"
-import Header from "../components/Header.vue"
+import MyPage from "../components/MyPage.vue"
+
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/profile",
     name: "Profile",
     component: Profile,
+  },
+  {
+    path: "/mypage",
+    name: "MyPage",
+    component: MyPage,
   },
 ]
 

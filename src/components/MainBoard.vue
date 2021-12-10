@@ -22,6 +22,7 @@
       <div class="Posted__form">
         <div class="form__detail">
           <div class="form__profile">
+            <div v-if="post.isClosed">締切</div>
             <img v-bind:src="post.photo" alt="" class="profile__img" />
             <div class="profile__name">
               <h4 class="name">投稿者</h4>
@@ -46,13 +47,20 @@
           <h2 class="texts__title">{{ post.title }}</h2>
           <h3 class="texts__text">{{ post.text }}</h3>
         </div>
+        <div class="post__button" v-if="$store.state.isAuth && post.isClosed">
+          詳細を見る
+        </div>
         <router-link
-          v-if="$store.state.isAuth"
+          v-if="$store.state.isAuth && post.isClosed === false"
           :to="{ name: `DetailPage`, params: { id: post.dataId } }"
           ><div class="post__button">詳細を見る</div>
         </router-link>
 
-        <div v-else @click="login" class="post__button2">
+        <div
+          v-else-if="$store.state.isAuth === false"
+          @click="login"
+          class="post__button2"
+        >
           ログインして詳細を見る
         </div>
       </div>
