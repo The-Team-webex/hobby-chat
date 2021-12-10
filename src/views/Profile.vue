@@ -6,9 +6,14 @@
       class="profile__img"
     />
     <h3 class="text">名前</h3>
-    <div v-if="canEditName">
-      <input type="text" placeholder="名前を変更" v-model="userName" />
-      <div class="edit__button" v-on:click="cancelName">キャンセル</div>
+    <div class="edit-flex" v-if="canEditName">
+      <input
+        class="edit-text"
+        type="text"
+        placeholder="名前を変更"
+        v-model="userName"
+      />
+      <div class="edit__button2" v-on:click="cancelName">キャンセル</div>
     </div>
     <div v-else>
       <h1 class="profile__text">{{ $store.state.userData.name }}</h1>
@@ -16,10 +21,17 @@
     </div>
 
     <h3 class="text">大学</h3>
-    <div v-if="canEditCollege">
-      <input type="text" placeholder="名前を変更" v-model="userCollege" />
-      <div class="text__1">大学</div>
-      <div class="edit__button" v-on:click="cancelCollege">キャンセル</div>
+    <div class="edit-flex" v-if="canEditCollege">
+      <div class="input-edit">
+        <input
+          class="edit-text2"
+          type="text"
+          placeholder="名前を変更"
+          v-model="userCollege"
+        />
+        <div class="text__1">大学</div>
+      </div>
+      <div class="edit__button2" v-on:click="cancelCollege">キャンセル</div>
     </div>
     <div v-else>
       <h1 class="profile__text">{{ $store.state.userData.college }}大学</h1>
@@ -107,6 +119,19 @@ export default {
 <style scoped>
 .text__1 {
   display: inline-block;
+  font-size: 150%;
+  margin-right: 30px;
+}
+@media screen and (max-width: 739px) {
+  .text__1 {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 465px) {
+  .text__1 {
+    display: block;
+    margin: 10px auto 0;
+  }
 }
 
 .Profile {
@@ -151,6 +176,45 @@ export default {
   }
 }
 
+.edit-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-text {
+  width: 60%;
+  height: 50px;
+  font-size: 150%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 739px) {
+  .edit-text {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 465px) {
+  .edit-text {
+    width: 90%;
+  }
+}
+.edit-text2 {
+  width: 60%;
+  height: 50px;
+  font-size: 150%;
+  margin-left: 70px;
+}
+@media screen and (max-width: 739px) {
+  .edit-text2 {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 465px) {
+  .edit-text2 {
+    margin-left: 0;
+    width: 90%;
+  }
+}
+
 .profile__text {
   display: block;
   margin: 0 auto;
@@ -187,6 +251,23 @@ export default {
   transition: all 0.3s;
 }
 .edit__button:hover {
+  background-color: rgb(76, 190, 196);
+  border: 1px solid rgb(76, 190, 196);
+  color: white;
+}
+.edit__button2 {
+  display: inline-block;
+  width: 150px;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 150%;
+  background-color: white;
+  margin: 50px auto;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.edit__button2:hover {
   background-color: rgb(76, 190, 196);
   border: 1px solid rgb(76, 190, 196);
   color: white;

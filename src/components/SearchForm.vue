@@ -77,11 +77,8 @@
       </select>
       <!-- <input type="date" v-model="$store.state.keyDate" /> -->
       <input class="input__select" type="text" v-model="$store.state.keyWord" />
-      <div class="search__button" @click="filterlingPosts">
-        <div class="button__circle">
-          <img class="button__img" src="../assets/サーチアイコン.png" alt="" />
-        </div>
-      </div>
+    </div>
+    <div class="search__button" @click="filterlingPosts">
       <span class="type__button">検索</span>
     </div>
   </div>
@@ -104,13 +101,12 @@ export default {
 .SearchForm {
   margin: 60px auto 0;
   text-align: center;
-  padding-bottom: 70px;
+  padding-bottom: 150px;
   max-width: 1300px;
   width: 60%;
   height: 100px;
   background-color: #00adb5;
   border-radius: 10px;
-  position: relative;
 }
 @media screen and (max-width: 1440px) {
   .SearchForm {
@@ -120,6 +116,12 @@ export default {
 @media screen and (max-width: 783px) {
   .SearchForm {
     padding-bottom: 240px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .SearchForm {
+    width: 90%;
+    margin: 0 auto;
   }
 }
 
@@ -183,6 +185,7 @@ export default {
 }
 
 .input__select {
+  width: 148px;
   margin-right: 170px;
   padding: 10px 5px;
   font-size: 80%;
@@ -208,58 +211,27 @@ export default {
 }
 
 .search__button {
-  position: absolute;
-  right: 5%;
-  bottom: 20%;
-  float: right;
-  cursor: pointer;
 }
 @media screen and (max-width: 1783px) {
   .search__button {
-    right: 2%;
   }
 }
 @media screen and (max-width: 783px) {
   .search__button {
-    display: none;
   }
 }
+
 .type__button {
-  display: none;
-}
-@media screen and (max-width: 783px) {
-  .type__button {
-    display: inline-block;
-    width: 40%;
-    margin: 20px auto;
-    padding: 10px 0;
-    background-color: white;
-    border-radius: 30px;
-    transition: all 0.3s;
-    cursor: pointer;
-  }
-  .type__button:hover {
-    background-color: chartreuse;
-  }
-}
-
-.button__circle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: white;
-}
-
-.button__img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
+  display: block;
+  width: 150px;
+  margin: 30px auto;
+  padding: 10px 0;
+  background-color: white;
+  border-radius: 30px;
   transition: all 0.3s;
+  cursor: pointer;
 }
-.button__img:hover {
-  width: 40px;
+.type__button:hover {
+  background-color: chartreuse;
 }
 </style>
