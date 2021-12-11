@@ -2,7 +2,9 @@
   <div id="app">
     <div class="header" id="nav">
       <div class="header-left">
-        <img src="./assets/ロゴ (0-00-00-00).png" alt="" class="logo" />
+        <router-link to="/">
+          <img src="./assets/ロゴ (0-00-00-00).png" alt="logo" class="logo" />
+        </router-link>
       </div>
       <div class="header-right">
         <router-link
