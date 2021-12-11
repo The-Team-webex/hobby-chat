@@ -131,10 +131,6 @@ export default {
   color: black;
 }
 
-.bd-right {
-  border-right: 2px solid black;
-}
-
 .logo {
   width: 20%;
 }
