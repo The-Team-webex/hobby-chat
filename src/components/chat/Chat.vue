@@ -9,15 +9,21 @@
           <div class="form__profile">
             <img v-bind:src="posts.photo" alt="" class="profile__img" />
             <div class="profile__name">
-              <h4>投稿者</h4>
-              <h3>{{ posts.college }}大学/{{ posts.name }}<span>さん</span></h3>
+              <h3 class="name-small">投稿者</h3>
+              <h3>
+                {{ posts.college }}大学/<span class="new-line"
+                  >{{ posts.name }}<span class="name-small">さん</span></span
+                >
+              </h3>
             </div>
             <div class="tags">
               <ul>
                 <li class="tag">#{{ posts.category }}</li>
                 <li class="tag">#{{ posts.place }}</li>
                 <li class="date__title">
-                  <span>開催日時</span>{{ posts.date }} / {{ posts.time }}〜
+                  <span>開催日時</span>
+                  <span class="new-line">{{ posts.date }} /</span>
+                  {{ posts.time }}〜
                 </li>
               </ul>
             </div>
@@ -29,6 +35,8 @@
         </div>
       </div>
     </div>
+
+    <h3 class="chat-title">Chat box</h3>
 
     <div class="chat-box" v-for="(message, index) in messages" :key="index">
       <div class="profile">
@@ -61,6 +69,10 @@
 </template>
 
 <style scoped>
+* {
+  letter-spacing: 2px;
+}
+
 .chat-box {
   margin: 50px;
   position: relative;
@@ -87,6 +99,10 @@
   display: inline-block;
 }
 
+.new-line {
+  display: inline-block;
+}
+
 .content {
   display: inline-block;
   max-width: 400px;
@@ -105,23 +121,37 @@
 
 .detail-header {
   width: 60%;
+  max-width: 1300px;
   background-color: #00adb5;
-  margin: 30px auto;
+  margin: 150px auto 0;
+  padding: 5px;
+  border-radius: 10px;
   text-align: center;
+}
+@media screen and (max-width: 1440px) {
+  .detail-header {
+    width: 90%;
+  }
 }
 
 .header-text {
-  font-size: 35px;
+  font-size: 200%;
   font-weight: normal;
   color: white;
 }
 
 .detail-box {
   border: 3px solid #d3d1d1;
-  /* border-radius: 10px; */
-  width: 90%;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 1300px;
   margin: 20px auto 0;
-  padding: 10px 0;
+  text-align: center;
+}
+@media screen and (max-width: 1440px) {
+  .detail-box {
+    width: 90%;
+  }
 }
 
 .Posted__form {
@@ -132,37 +162,78 @@
   margin: 50px;
 }
 
+.form__detail {
+  padding: 15px 0;
+}
+
 .form__detail ul {
   list-style-type: none;
+  margin-left: 0;
+  padding: 0;
+}
+@media screen and (max-width: 1440px) {
+  .form__detail ul {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 1091px) {
+  .form__detail ul {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
 }
 
 .form__detail ul li {
   display: inline-block;
   padding: 10px;
-  margin: 0px 10px; /*余白も指定できる*/
+  margin: 0 10px 0; /*余白も指定できる*/
   border: solid 2px #00adb5;
   font-weight: bold; /*文字を太字に*/
+  font-size: 130%;
   color: #00adb5; /*文字色を白に*/
   border-radius: 10px;
 }
-
-.form__profile {
-  margin-left: 30px;
-  display: inline-block;
+@media screen and (max-width: 1990px) {
+  .form__detail ul li {
+    font-size: 110%;
+  }
+}
+@media screen and (max-width: 1855px) {
+  .form__detail ul li {
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 1091px) {
+  .form__detail ul li {
+    margin-bottom: 10px;
+  }
 }
 
-.tags {
-  float: right;
-  padding-top: 15px;
+.form__profile {
+  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .profile__img {
-  width: 60px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  margin: 0 auto;
 }
 
 .profile__name {
   display: inline-block;
-  font-size: 15px;
+  font-size: 150%;
+}
+
+.name-small {
+  font-size: 80%;
 }
 
 .date__title {
@@ -195,18 +266,98 @@
 .input-box {
   display: flex;
   justify-content: center;
+  width: 90%;
+  max-width: 2000px;
+  margin: 120px auto 0;
+}
+/* @media screen and (max-width: 970px) {
+  .input-box {
+    justify-content: space-between;
+  }
+} */
+@media screen and (max-width: 1440px) {
+  .input-box {
+    width: 95%;
+  }
 }
 
 .input {
-  width: 80%;
-  margin: 0rem 1rem;
+  width: 56%;
+  margin-right: 10px;
   padding: 2px;
+  font-size: 200%;
   background-color: #eeeeee;
+}
+@media screen and (max-width: 1440px) {
+  .input {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 970px) {
+  .input {
+    margin-right: 1px;
+    font-size: 140%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .input {
+    width: 75%;
+  }
 }
 
 .input-button {
-  font-size: large;
-  padding: 10px;
+  margin-left: 10px;
+  width: 100%;
+  background-color: white;
+  border-radius: 50px;
+  font-size: 180%;
+  padding: 15px 40px;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 970px) {
+  .input-button {
+    font-size: 150%;
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .input-button {
+    font-size: 100%;
+    padding: 10px 20px;
+  }
+}
+.input-button:hover {
+  background-color: #00adb5;
+  border: none;
+  color: white;
+}
+
+.chat-title {
+  margin: 70px auto;
+  text-align: center;
+  font-size: 150%;
+  color: white;
+  background-color: #00adb5;
+  width: 60%;
+  max-width: 1300px;
+  border-radius: 10px;
+  padding: 20px 0;
+}
+@media screen and (max-width: 1440px) {
+  .chat-title {
+    width: 90%;
+  }
+}
+
+.chat-box {
+  margin: 0 auto 40px;
+  width: 60%;
+  max-width: 1300px;
+}
+@media screen and (max-width: 1440px) {
+  .chat-box {
+    width: 90%;
+  }
 }
 </style>
 

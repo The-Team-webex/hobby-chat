@@ -97,7 +97,7 @@ export default {
   width: 60%;
   max-width: 1300px;
   background-color: #00adb5;
-  margin: 60px auto;
+  margin: 150px auto;
   text-align: center;
   padding: 20px 0;
   border-radius: 10px;
@@ -119,7 +119,8 @@ export default {
   border: 3px solid #d3d1d1;
   border-top-width: 60px;
   border-radius: 10px;
-  width: 50%;
+  width: 55%;
+  max-width: 1300px;
   margin: 100px auto 0;
   text-align: center;
   padding: 30px 0;

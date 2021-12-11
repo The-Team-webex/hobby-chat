@@ -58,8 +58,8 @@ export default {
   display: flex;
   justify-content: right;
   height: 80px;
-  border-bottom: 2px solid black;
-  display: fixed;
+  background-color: #00adb5;
+  position: fixed;
   top: 0;
   z-index: 10;
 }
@@ -107,10 +107,10 @@ export default {
 }
 
 .header-list {
-  color: black;
+  color: white;
   text-decoration: none;
   display: inline-block;
-  border-left: 2px solid black;
+  border-left: 2px solid white;
   width: 20%;
   height: 80px;
   line-height: 80px;
@@ -126,6 +126,7 @@ export default {
 }
 .header-list:hover {
   background-color: rgb(231, 231, 231);
+  color: black;
 }
 
 .bd-right {
@@ -145,13 +146,14 @@ export default {
     display: block;
     position: fixed;
     right: 10px;
-    top: 20px;
+    top: 15px;
     margin: auto 0;
   }
 }
 @media screen and (max-width: 600px) {
   #nav-drawer {
     right: 5px;
+    top: 10px;
   }
 }
 

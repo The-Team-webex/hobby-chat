@@ -185,7 +185,7 @@ export default {
 .PostForm {
   background-color: #eeeeee;
   width: 60%;
-  margin: 80px auto 80px;
+  margin: 150px auto 50px;
   padding: 50px 0;
 }
 @media screen and (max-width: 1440px) {
