@@ -76,7 +76,12 @@
         </optgroup>
       </select>
       <!-- <input type="date" v-model="$store.state.keyDate" /> -->
-      <input class="input__select" type="text" v-model="$store.state.keyWord" />
+      <input
+        class="input__select"
+        type="text"
+        placeholder="キーワード"
+        v-model="$store.state.keyWord"
+      />
     </div>
     <div class="search__button" @click="filterlingPosts">
       <span class="type__button">検索</span>
@@ -188,7 +193,7 @@ export default {
   width: 148px;
   margin-right: 170px;
   padding: 10px 5px;
-  font-size: 80%;
+  font-size: 100%;
   border-radius: 5px;
 }
 @media screen and (max-width: 1783px) {
@@ -209,6 +214,11 @@ export default {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 500px) {
+  .input__select {
+    width: 76%;
+  }
+}
 
 .type__button {
   display: block;
@@ -221,6 +231,7 @@ export default {
   cursor: pointer;
 }
 .type__button:hover {
-  background-color: chartreuse;
+  background-color: #66df04;
+  color: white;
 }
 </style>
