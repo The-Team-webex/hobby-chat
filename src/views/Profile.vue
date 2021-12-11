@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link to="/mypage">自分の投稿一覧</router-link>
+    <router-link class="mypage-button" to="/mypage">自分の投稿一覧</router-link>
     <div class="Profile">
       <img
         v-bind:src="$store.state.userData.photo"
@@ -140,7 +140,7 @@ export default {
 .Profile {
   background-color: rgb(231, 231, 231);
   width: 60%;
-  margin: 100px auto;
+  margin: 70px auto 90px;
   padding: 50px 0;
   text-align: center;
 }
@@ -298,5 +298,27 @@ export default {
   .change__button {
     width: 60%;
   }
+}
+
+.mypage-button {
+  display: block;
+  margin: 150px auto 0;
+  text-align: center;
+  text-decoration: none;
+  background-color: #00adb5;
+  padding: 20px 0;
+  font-size: 150%;
+  color: white;
+  width: 60%;
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+@media screen and (max-width: 1012px) {
+  .mypage-button {
+    width: 80%;
+  }
+}
+.mypage-button:hover {
+  background-color: #00f2ff;
 }
 </style>

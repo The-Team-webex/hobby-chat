@@ -22,7 +22,7 @@
       <div class="Posted__form">
         <div class="form__detail">
           <div class="form__profile">
-            <div v-if="post.isClosed">締切</div>
+            <div class="end-text" v-if="post.isClosed">締切</div>
             <img v-bind:src="post.photo" alt="" class="profile__img" />
             <div class="profile__name">
               <h4 class="name">投稿者</h4>
@@ -156,7 +156,8 @@ export default {
 }
 
 .Posted__form {
-  width: 50%;
+  width: 51.5%;
+  max-width: 1300px;
   border: solid 2px #d3d1d1;
   padding: 25px;
   border-radius: 10px;
@@ -189,12 +190,12 @@ export default {
   border-radius: 10px;
   margin: 0 10px;
 }
-@media screen and (max-width: 1443px) {
+@media screen and (max-width: 1500px) {
   .form__detail ul li {
     font-size: 100%;
   }
 }
-@media screen and (max-width: 761px) {
+@media screen and (max-width: 784px) {
   .form__detail ul li {
     width: 80%;
     margin: 0 auto;
@@ -459,6 +460,22 @@ export default {
     left: 51%;
     right: 49%;
     width: 100%;
+  }
+}
+
+.end-text {
+  display: inline-block;
+  font-size: 150%;
+  font-weight: bold;
+  color: red;
+  border: 2px solid red;
+  border-radius: 40px;
+  height: 10%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 761px) {
+  .end-text {
+    width: 150px;
   }
 }
 </style>

@@ -99,7 +99,7 @@ export default {
 
 <style scoped>
 .SearchForm {
-  margin: 60px auto 0;
+  margin: 150px auto 0;
   text-align: center;
   padding-bottom: 150px;
   max-width: 1300px;
@@ -121,7 +121,7 @@ export default {
 @media screen and (max-width: 450px) {
   .SearchForm {
     width: 90%;
-    margin: 0 auto;
+    margin: 150px auto 0;
   }
 }
 
